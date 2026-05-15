@@ -642,7 +642,19 @@ function filter(input, id) {
     const f = input.value.toLowerCase();
     const t = document.getElementById(id);
     if (!t) return;
-    t.querySelectorAll('tbody tr').forEach(r => r.style.display = r.textContent.toLowerCase().includes(f) ? '' : 'none');
+    const rows = t.querySelectorAll('tbody tr');
+    let visible = 0;
+    rows.forEach(r => {
+        const match = r.textContent.toLowerCase().includes(f);
+        r.style.display = match ? '' : 'none';
+        if (match) visible++;
+    });
+    // Update count
+    const cnt = t.parentElement.querySelector('.cnt');
+    if (cnt) {
+        const total = rows.length;
+        cnt.textContent = visible === total ? `${total} záznamů` : `${visible} z ${total} zobrazeno`;
+    }
 }
 function sort(id, col) {
     const t = document.getElementById(id);
@@ -657,12 +669,15 @@ function sort(id, col) {
     ths.forEach(h => h.classList.remove('asc','desc'));
     th.classList.add(asc?'desc':'asc');
     rows.sort((a,b) => {
+        // Use textContent on the row's cells — works even in hidden tabs
         const aTds = a.querySelectorAll('td');
         const bTds = b.querySelectorAll('td');
         if (col >= aTds.length || col >= bTds.length) return 0;
-        let av = aTds[col].innerText.trim();
-        let bv = bTds[col].innerText.trim();
+        // Use textContent (not innerText) — innerText is empty for hidden elements
+        let av = aTds[col].textContent.trim();
+        let bv = bTds[col].textContent.trim();
         if (av === 'N/A' || bv === 'N/A') return asc ? bv.localeCompare(av, 'cs') : av.localeCompare(bv, 'cs');
+        // Parse number — strip everything except digits, dots, minus
         const an = parseFloat(av.replace(/[^\d.-]/g, ''));
         const bn = parseFloat(bv.replace(/[^\d.-]/g, ''));
         if (!isNaN(an) && !isNaN(bn)) return asc ? bn - an : an - bn;
@@ -670,15 +685,7 @@ function sort(id, col) {
     });
     rows.forEach(r => tbody.appendChild(r));
 }
-// Filter for fee table (non-tbody tables)
-document.querySelectorAll('.fees input.search').forEach(input => {
-    input.addEventListener('input', function() {
-        const f = this.value.toLowerCase();
-        const table = document.querySelector('#fees table');
-        if (!table) return;
-        table.querySelectorAll('tbody tr').forEach(r => r.style.display = r.textContent.toLowerCase().includes(f) ? '' : 'none');
-    });
-});
+
 </script>
 </body>
 </html>
