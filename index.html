@@ -341,18 +341,30 @@ function filter(input, id) {
 function sort(id, col) {
     const t = document.getElementById(id);
     if (!t) return;
-    const rows = Array.from(t.querySelectorAll('tbody tr'));
-    const th = t.querySelectorAll('th')[col];
+    const tbody = t.querySelector('tbody');
+    if (!tbody) return;
+    const rows = Array.from(tbody.querySelectorAll('tr'));
+    const ths = t.querySelectorAll('th');
+    if (col >= ths.length) return;
+    const th = ths[col];
     const asc = th.classList.contains('asc');
-    t.querySelectorAll('th').forEach(h => h.classList.remove('asc','desc'));
+    ths.forEach(h => h.classList.remove('asc','desc'));
     th.classList.add(asc?'desc':'asc');
     rows.sort((a,b) => {
-        let av = a.cells[col].textContent.trim(), bv = b.cells[col].textContent.trim();
-        let an = parseFloat(av.replace(/[^0-9.-]/g,'')), bn = parseFloat(bv.replace(/[^0-9.-]/g,''));
-        if (!isNaN(an)&&!isNaN(bn)) return asc ? bn-an : an-bn;
-        return asc ? bv.localeCompare(av,'cs') : av.localeCompare(bv,'cs');
+        // Získat text z buňky, odstranit HTML
+        const aTds = a.querySelectorAll('td');
+        const bTds = b.querySelectorAll('td');
+        if (col >= aTds.length || col >= bTds.length) return 0;
+        let av = aTds[col].innerText.trim();
+        let bv = bTds[col].innerText.trim();
+        if (av === 'N/A' || bv === 'N/A') return asc ? bv.localeCompare(av, 'cs') : av.localeCompare(bv, 'cs');
+        // Parsovat číslo — odstranit vše kromě číslic, tečky a mínus
+        const an = parseFloat(av.replace(/[^\d.-]/g, ''));
+        const bn = parseFloat(bv.replace(/[^\d.-]/g, ''));
+        if (!isNaN(an) && !isNaN(bn)) return asc ? bn - an : an - bn;
+        return asc ? bv.localeCompare(av, 'cs') : av.localeCompare(bv, 'cs');
     });
-    rows.forEach(r => t.querySelector('tbody').appendChild(r));
+    rows.forEach(r => tbody.appendChild(r));
 }
 </script>
 </body>
