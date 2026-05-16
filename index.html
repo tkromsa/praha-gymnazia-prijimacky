@@ -337,12 +337,7 @@ footer { text-align: center; padding: 40px 0; color: var(--text-muted); font-siz
 </div>
 
 <!-- YEAR SELECTOR -->
-<div class="year-bar">
-  <span class="year-label">Školní rok:</span>
-  
-  <button class="year-btn active" onclick="setYear('y2025', this)">2024/25</button>
-  
-</div>
+
 
 <!-- TABS -->
 <div class="tabs">
@@ -399,21 +394,7 @@ footer { text-align: center; padding: 40px 0; color: var(--text-muted); font-siz
     <div class="desc">Pražská gymnázia s 4letým studiem — přehled kol, kapacity a výsledky</div>
 
     <!-- ===== 2024/25 ===== -->
-    <div id="gy4-y2025" class="year-data active">
-      <h3>Školní rok 2024/25</h3>
-
-      <!-- 1. KOLANO -->
-      <div class="kolo-section">
-        <span class="kolo-label k1">1. kolo 2025</span>
-        <div class="stats">
-          <div class="st"><div class="n">88</div><div class="l">škol</div></div>
-          <div class="st"><div class="n">15 474</div><div class="l">přihlášek</div></div>
-          <div class="st"><div class="n">3 109</div><div class="l">přijatých</div></div>
-          <div class="st"><div class="n">4 485</div><div class="l">kapacita</div></div>
-          <div class="st"><div class="n">3.67</div><div class="l">prům. index</div></div>
-          <div class="st"><div class="n" style="color:#e53935">34</div><div class="l">soukromé</div></div>
-          <div class="st"><div class="n" style="color:#43a047">54</div><div class="l">veřejné</div></div>
-        </div>
+    
         <input class="search" placeholder="Hledat školu..." oninput="filter(this,'t4k1-25')">
         <div class="tbl"><table id="t4k1-25">
           <thead><tr>
@@ -482,38 +463,15 @@ footer { text-align: center; padding: 40px 0; color: var(--text-muted); font-siz
     </div>
 
     <!-- ===== 2023/24 ===== -->
-    <div id="gy4-y2024" class="year-data">
-      <h3>Školní rok 2023/24</h3>
-      <div class="kolo-section">
-        <span class="kolo-label k1">1. kolo 2024</span>
-        <div class="stats">
-          <div class="st"><div class="n">79</div><div class="l">škol</div></div>
-          <div class="st"><div class="n">16 050</div><div class="l">přihlášek</div></div>
-          <div class="st"><div class="n">3 185</div><div class="l">přijatých</div></div>
-          <div class="st"><div class="n">4 029</div><div class="l">kapacita</div></div>
-          <div class="st"><div class="n">4.07</div><div class="l">prům. index</div></div>
-          <div class="st"><div class="n" style="color:#e53935">24</div><div class="l">soukromé</div></div>
-          <div class="st"><div class="n" style="color:#43a047">55</div><div class="l">veřejné</div></div>
-        </div>
+    
         <div class="note">Detailní data pro 2023/24 jsou v archivech Cermatu. Zobrazuji souhrn.</div>
       </div>
     </div>
 
     <!-- ===== 2025/26 ===== -->
-    <div id="gy4-y2026" class="year-data">
-      <h3>Školní rok 2025/26</h3>
-      <div class="kolo-section"><span class="kolo-label k1">1. kolo 2026</span>
-        <div class="stats">
-          <div class="st"><div class="n">85</div><div class="l">škol</div></div>
-          <div class="st"><div class="n">11 072</div><div class="l">přihlášek</div></div>
-          <div class="st"><div class="n">3 319</div><div class="l">přijatých</div></div>
-          <div class="st"><div class="n">4 689</div><div class="l">kapacita</div></div>
-          <div class="st"><div class="n">2.36</div><div class="l">prům. index</div></div>
-          <div class="st"><div class="n" style="color:#e53935">42</div><div class="l">soukromé</div></div>
-          <div class="st"><div class="n" style="color:#43a047">42</div><div class="l">veřejné</div></div>
-        </div>
+    
         <input class="search" placeholder="Hledat školu..." oninput="filter(this,'gy4-26')">
-        <div class="tbl"><table><tbody id="gy4-26-body"><tr><td>1</td><td><strong>Gymnázium se sportovní přípravou Šeberov</strong> <span class="b pub">veřejná</span></td><td>V ladech 6, 14900</td><td>255</td><td>59</td><td>65</td><td><span class="idx h">26.91</span></td><td>48 bodů</td><td>62.2 bodů</td></tr><tr><td>2</td><td><strong>Gymnázium</strong> <span class="b pub">veřejná</span></td><td>Přípotoční 1337, 10100</td><td>444</td><td>149</td><td>150</td><td><span class="idx h">19.98</span></td><td>45 bodů</td><td>65 bodů</td></tr><tr><td>3</td><td><strong>Gymnázium</strong> <span class="b pub">veřejná</span></td><td>Arabská 682, 16000</td><td>476</td><td>150</td><td>150</td><td><span class="idx h">8.90</span></td><td>79 bodů</td><td>87.7 bodů</td></tr><tr><td>4</td><td><strong>EDUCAnet-gymn., SOŠ a ZŠ Praha, s.r.o.</strong> <span class="b priv">soukromá</span></td><td>Roztylská 1860, 14800</td><td>296</td><td>91</td><td>118</td><td><span class="idx h">8.02</span></td><td>52 bodů</td><td>64.3 bodů</td></tr><tr><td>5</td><td><strong>Gymnázium</strong> <span class="b pub">veřejná</span></td><td>Na Zatlance 1330, 15000</td><td>521</td><td>120</td><td>120</td><td><span class="idx h">7.92</span></td><td>78 bodů</td><td>88.2 bodů</td></tr><tr><td>6</td><td><strong>Gymnázium Elišky Krásnohorské</strong> <span class="b pub">veřejná</span></td><td>Ohradní 111, 14000</td><td>227</td><td>30</td><td>30</td><td><span class="idx h">7.57</span></td><td>76 bodů</td><td>84.5 bodů</td></tr><tr><td>7</td><td><strong>SPŠ, SOŠ a G, Praha 2, Podskalská 10</strong> <span class="b pub">veřejná</span></td><td>Podskalská 365, 12800</td><td>218</td><td>30</td><td>30</td><td><span class="idx h">7.27</span></td><td>59 bodů</td><td>73 bodů</td></tr><tr><td>8</td><td><strong>Gymnázium Čakovice</strong> <span class="b pub">veřejná</span></td><td>náměstí 25. března 100, 19600</td><td>195</td><td>60</td><td>60</td><td><span class="idx h">6.50</span></td><td>60 bodů</td><td>76.6 bodů</td></tr><tr><td>9</td><td><strong>Gymnázium</strong> <span class="b pub">veřejná</span></td><td>Písnická 760, 14200</td><td>187</td><td>30</td><td>30</td><td><span class="idx h">6.23</span></td><td>71 bodů</td><td>78.5 bodů</td></tr><tr><td>10</td><td><strong>Karlínské gymnázium</strong> <span class="b pub">veřejná</span></td><td>Pernerova 273, 18600</td><td>391</td><td>78</td><td>124</td><td><span class="idx h">6.15</span></td><td>71 bodů</td><td>81.5 bodů</td></tr></tbody></table></div>
+        <div class="tbl"><table id="gy4-26"><tbody id="gy4-26-body"><tr data-name="Gymnázium se sportovní přípravou Šeberov"><td>1</td><td><strong>Gymnázium se sportovní přípravou Šeberov</strong> <span class="b pub">veřejná</span></td><td>V ladech 6, 14900</td><td>255</td><td>59</td><td>65</td><td><span class="idx h">26.91</span></td><td>48 bodů</td><td>62.2 bodů</td></tr><tr data-name="EDUCAnet-gymn., SOŠ a ZŠ Praha, s.r.o."><td>2</td><td><strong>Gymnázium</strong> <span class="b pub">veřejná</span></td><td>Přípotoční 1337, 10100</td><td>444</td><td>149</td><td>150</td><td><span class="idx h">19.98</span></td><td>45 bodů</td><td>65 bodů</td></tr><tr data-name="Gymnázium Elišky Krásnohorské"><td>3</td><td><strong>Gymnázium</strong> <span class="b pub">veřejná</span></td><td>Arabská 682, 16000</td><td>476</td><td>150</td><td>150</td><td><span class="idx h">8.90</span></td><td>79 bodů</td><td>87.7 bodů</td></tr><tr data-name="SPŠ, SOŠ a G, Praha 2, Podskalská 10"><td>4</td><td><strong>EDUCAnet-gymn., SOŠ a ZŠ Praha, s.r.o.</strong> <span class="b priv">soukromá</span></td><td>Roztylská 1860, 14800</td><td>296</td><td>91</td><td>118</td><td><span class="idx h">8.02</span></td><td>52 bodů</td><td>64.3 bodů</td></tr><tr data-name="Gymnázium Čakovice"><td>5</td><td><strong>Gymnázium</strong> <span class="b pub">veřejná</span></td><td>Na Zatlance 1330, 15000</td><td>521</td><td>120</td><td>120</td><td><span class="idx h">7.92</span></td><td>78 bodů</td><td>88.2 bodů</td></tr><tr data-name="Karlínské gymnázium"><td>6</td><td><strong>Gymnázium Elišky Krásnohorské</strong> <span class="b pub">veřejná</span></td><td>Ohradní 111, 14000</td><td>227</td><td>30</td><td>30</td><td><span class="idx h">7.57</span></td><td>76 bodů</td><td>84.5 bodů</td></tr><tr><td>7</td><td><strong>SPŠ, SOŠ a G, Praha 2, Podskalská 10</strong> <span class="b pub">veřejná</span></td><td>Podskalská 365, 12800</td><td>218</td><td>30</td><td>30</td><td><span class="idx h">7.27</span></td><td>59 bodů</td><td>73 bodů</td></tr><tr><td>8</td><td><strong>Gymnázium Čakovice</strong> <span class="b pub">veřejná</span></td><td>náměstí 25. března 100, 19600</td><td>195</td><td>60</td><td>60</td><td><span class="idx h">6.50</span></td><td>60 bodů</td><td>76.6 bodů</td></tr><tr><td>9</td><td><strong>Gymnázium</strong> <span class="b pub">veřejná</span></td><td>Písnická 760, 14200</td><td>187</td><td>30</td><td>30</td><td><span class="idx h">6.23</span></td><td>71 bodů</td><td>78.5 bodů</td></tr><tr><td>10</td><td><strong>Karlínské gymnázium</strong> <span class="b pub">veřejná</span></td><td>Pernerova 273, 18600</td><td>391</td><td>78</td><td>124</td><td><span class="idx h">6.15</span></td><td>71 bodů</td><td>81.5 bodů</td></tr></tbody></table></div>
         <div class="cnt">85 záznamů</div>
       </div>
       <div class="note">Data: Cermat PZ2026 1. kolo. 2. kolo ještě neproběhlo.</div>
@@ -527,17 +485,7 @@ footer { text-align: center; padding: 40px 0; color: var(--text-muted); font-siz
     <h2>6letá gymnázia</h2>
     <div class="desc">Pražská gymnázia s 6letým studiem</div>
 
-    <div id="gy6-y2025" class="year-data active">
-      <h3>Školní rok 2024/25</h3>
-      <div class="kolo-section">
-        <span class="kolo-label k1">1. kolo 2025</span>
-        <div class="stats">
-          <div class="st"><div class="n">4</div><div class="l">škol</div></div>
-          <div class="st"><div class="n">1 409</div><div class="l">přihlášek</div></div>
-          <div class="st"><div class="n">165</div><div class="l">přijatých</div></div>
-          <div class="st"><div class="n">165</div><div class="l">kapacita</div></div>
-          <div class="st"><div class="n">9.13</div><div class="l">prům. index</div></div>
-        </div>
+    
         <input class="search" placeholder="Hledat školu..." oninput="filter(this,'t6k1-25')">
         <div class="tbl"><table id="t6k1-25">
           <thead><tr><th>#</th><th onclick="sort('t6k1-25',1)">Škola</th><th>Adresa</th><th onclick="sort('t6k1-25',3)">Přihlášky</th><th onclick="sort('t6k1-25',4)">Přijati</th><th onclick="sort('t6k1-25',5)">Kapacita</th><th onclick="sort('t6k1-25',6)">Index</th><th onclick="sort('t6k1-25',7)">Min body</th><th onclick="sort('t6k1-25',8)">Prům. body</th></tr></thead>
@@ -571,33 +519,12 @@ footer { text-align: center; padding: 40px 0; color: var(--text-muted); font-siz
       </div>
     </div>
 
-    <div id="gy6-y2024" class="year-data">
-      <h3>Školní rok 2023/24</h3>
-      <div class="kolo-section">
-        <span class="kolo-label k1">1. kolo 2024</span>
-        <div class="stats">
-          <div class="st"><div class="n">4</div><div class="l">škol</div></div>
-          <div class="st"><div class="n">1 644</div><div class="l">přihlášek</div></div>
-          <div class="st"><div class="n">170</div><div class="l">přijatých</div></div>
-          <div class="st"><div class="n">170</div><div class="l">kapacita</div></div>
-          <div class="st"><div class="n">10.85</div><div class="l">prům. index</div></div>
-        </div>
+    
         <div class="note">Detailní data pro 2023/24 jsou v archivech Cermatu.</div>
       </div>
     </div>
 
-    <div id="gy6-y2026" class="year-data">
-      <h3>Školní rok 2025/26</h3>
-      <div class="kolo-section"><span class="kolo-label k1">1. kolo 2026</span>
-        <div class="stats">
-          <div class="st"><div class="n">15</div><div class="l">škol</div></div>
-          <div class="st"><div class="n">8 094</div><div class="l">přihlášek</div></div>
-          <div class="st"><div class="n">715</div><div class="l">přijatých</div></div>
-          <div class="st"><div class="n">717</div><div class="l">kapacita</div></div>
-          <div class="st"><div class="n">11.29</div><div class="l">prům. index</div></div>
-          <div class="st"><div class="n" style="color:#e53935">5</div><div class="l">soukromé</div></div>
-          <div class="st"><div class="n" style="color:#43a047">10</div><div class="l">veřejné</div></div>
-        </div>
+    
         <input class="search" placeholder="Hledat školu..." oninput="filter(this,'gy6-26')">
         <div class="tbl"><table id="gy6-26"><thead><tr><th>#</th><th onclick="sort('gy6-26',1)">Škola</th><th>Adresa</th><th onclick="sort('gy6-26',3)">Přihlášky</th><th onclick="sort('gy6-26',4)">Přijati</th><th onclick="sort('gy6-26',5)">Kapacita</th><th onclick="sort('gy6-26',6)">Index</th><th onclick="sort('gy6-26',7)">Min body</th><th onclick="sort('gy6-26',8)">Prům. body</th></tr></thead>
           <tbody id="gy6-26-body"></tbody>
@@ -615,17 +542,7 @@ footer { text-align: center; padding: 40px 0; color: var(--text-muted); font-siz
     <h2>8letá gymnázia</h2>
     <div class="desc">Pražská gymnázia s 8letým studiem</div>
 
-    <div id="gy8-y2025" class="year-data active">
-      <h3>Školní rok 2024/25</h3>
-      <div class="kolo-section">
-        <span class="kolo-label k1">1. kolo 2025</span>
-        <div class="stats">
-          <div class="st"><div class="n">17</div><div class="l">škol</div></div>
-          <div class="st"><div class="n">4 966</div><div class="l">přihlášek</div></div>
-          <div class="st"><div class="n">789</div><div class="l">přijatých</div></div>
-          <div class="st"><div class="n">794</div><div class="l">kapacita</div></div>
-          <div class="st"><div class="n">5.53</div><div class="l">prům. index</div></div>
-        </div>
+    
         <input class="search" placeholder="Hledat školu..." oninput="filter(this,'t8k1-25')">
         <div class="tbl"><table id="t8k1-25">
           <thead><tr><th>#</th><th onclick="sort('t8k1-25',1)">Škola</th><th>Adresa</th><th onclick="sort('t8k1-25',3)">Přihlášky</th><th onclick="sort('t8k1-25',4)">Přijati</th><th onclick="sort('t8k1-25',5)">Kapacita</th><th onclick="sort('t8k1-25',6)">Index</th><th onclick="sort('t8k1-25',7)">Min body</th><th onclick="sort('t8k1-25',8)">Prům. body</th></tr></thead>
@@ -665,33 +582,12 @@ footer { text-align: center; padding: 40px 0; color: var(--text-muted); font-siz
       <div class="note">Pouze 1 škola měla 2. kolo — ostatní naplnily kapacitu v 1. kole.</div>
     </div>
 
-    <div id="gy8-y2024" class="year-data">
-      <h3>Školní rok 2023/24</h3>
-      <div class="kolo-section">
-        <span class="kolo-label k1">1. kolo 2024</span>
-        <div class="stats">
-          <div class="st"><div class="n">18</div><div class="l">škol</div></div>
-          <div class="st"><div class="n">5 697</div><div class="l">přihlášek</div></div>
-          <div class="st"><div class="n">782</div><div class="l">přijatých</div></div>
-          <div class="st"><div class="n">794</div><div class="l">kapacita</div></div>
-          <div class="st"><div class="n">6.42</div><div class="l">prům. index</div></div>
-        </div>
+    
         <div class="note">Detailní data pro 2023/24 jsou v archivech Cermatu.</div>
       </div>
     </div>
 
-    <div id="gy8-y2026" class="year-data">
-      <h3>Školní rok 2025/26</h3>
-      <div class="kolo-section"><span class="kolo-label k1">1. kolo 2026</span>
-        <div class="stats">
-          <div class="st"><div class="n">40</div><div class="l">škol</div></div>
-          <div class="st"><div class="n">13 383</div><div class="l">přihlášek</div></div>
-          <div class="st"><div class="n">1 727</div><div class="l">přijatých</div></div>
-          <div class="st"><div class="n">1 741</div><div class="l">kapacita</div></div>
-          <div class="st"><div class="n">7.69</div><div class="l">prům. index</div></div>
-          <div class="st"><div class="n" style="color:#e53935">15</div><div class="l">soukromé</div></div>
-          <div class="st"><div class="n" style="color:#43a047">22</div><div class="l">veřejné</div></div>
-        </div>
+    
         <input class="search" placeholder="Hledat školu..." oninput="filter(this,'gy8-26')">
         <div class="tbl"><table id="gy8-26"><thead><tr><th>#</th><th onclick="sort('gy8-26',1)">Škola</th><th>Adresa</th><th onclick="sort('gy8-26',3)">Přihlášky</th><th onclick="sort('gy8-26',4)">Přijati</th><th onclick="sort('gy8-26',5)">Kapacita</th><th onclick="sort('gy8-26',6)">Index</th><th onclick="sort('gy8-26',7)">Min body</th><th onclick="sort('gy8-26',8)">Prům. body</th></tr></thead>
           <tbody id="gy8-26-body"></tbody>
@@ -1047,6 +943,8 @@ function render2026() {
   });
 }
 
+render2026();
+
 function showTab(id, btn) {
   document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
@@ -1088,7 +986,7 @@ function filter(input, tableId) {
   const rows = t.querySelectorAll('tbody tr');
   let visible = 0;
   rows.forEach(r => {
-    const match = !f || r.textContent.toLowerCase().includes(f);
+    const match = !f || r.textContent.toLowerCase().includes(f) || (r.dataset.name && r.dataset.name.toLowerCase().includes(f));
     r.style.display = match ? '' : 'none';
     if (match) visible++;
   });
@@ -1148,8 +1046,8 @@ function goToSchool(name) {
     if (!tab) continue;
     var rows = tab.querySelectorAll('tbody tr');
     for (var row of rows) {
-      var rowText = row.textContent.toLowerCase().trim();
-      if (rowText.indexOf(normName) !== -1 || normName.indexOf(rowText.substring(0, 20)) !== -1) {
+      var rowName = row.dataset.name ? row.dataset.name.toLowerCase().trim() : row.textContent.toLowerCase().trim();
+      if (rowName.indexOf(normName) !== -1 || normName.indexOf(rowName.substring(0, 20)) !== -1) {
         var tabBtns = document.querySelectorAll('.tab-btn');
         if (i < tabBtns.length) {
           showTab(t, tabBtns[i]);
