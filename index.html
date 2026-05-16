@@ -864,6 +864,17 @@ function showTab(id, btn) {
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   btn.classList.add('active');
+  // Reset all row displays and search inputs in the newly active tab
+  const newTab = document.getElementById(id);
+  newTab.querySelectorAll('tbody tr').forEach(r => { r.style.display = ''; });
+  newTab.querySelectorAll('.cnt').forEach(c => {
+    const table = c.previousElementSibling ? c.previousElementSibling.querySelector('table') : null;
+    if (table) {
+      const total = table.querySelectorAll('tbody tr').length;
+      c.textContent = total + ' záznamů';
+    }
+  });
+  newTab.querySelectorAll('.search').forEach(s => { s.value = ''; });
 }
 
 function setYear(yearId, btn) {
@@ -886,6 +897,8 @@ function filter(input, tableId) {
   rows.forEach(r => {
     const match = !f || r.textContent.toLowerCase().includes(f);
     r.style.display = match ? '' : 'none';
+    if (match) visible++;
+  });
   // Find the .cnt element that follows this table's .tbl wrapper
   const tblWrapper = t.parentElement;
   const cnt = tblWrapper ? tblWrapper.nextElementSibling : null;
@@ -926,11 +939,10 @@ function sort(tableId, col) {
   visibleRows.sort((a, b) => {
     const ca = parseCell(a, col);
     const cb = parseCell(b, col);
-    // N/A always last
     if (isNaN(ca.num) && isNaN(cb.num)) return asc ? cb.str.localeCompare(ca.str, 'cs') : ca.str.localeCompare(cb.str, 'cs');
     if (isNaN(ca.num)) return 1;
     if (isNaN(cb.num)) return -1;
-    if (ca.num !== NaN && cb.num !== NaN) return asc ? cb.num - ca.num : ca.num - cb.num;
+    if (!isNaN(ca.num) && !isNaN(cb.num)) return asc ? cb.num - ca.num : ca.num - cb.num;
     return asc ? cb.str.localeCompare(ca.str, 'cs') : ca.str.localeCompare(cb.str, 'cs');
   });
 
