@@ -3,31 +3,100 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pražská gymnázia a SOU — Přijímací řízení 2024–2025</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<title>Pražská gymnázia a SOU — Přijímací řízení</title>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root {
-    --bg: #fafafa; --surface: #ffffff; --border: #eaeaea;
-    --text: #111; --text2: #666; --text3: #999;
-    --accent: #0070f3; --h: #e53935; --m: #f59e0b; --l: #43a047;
-    --radius: 8px; --shadow: 0 1px 3px rgba(0,0,0,0.04), 0 6px 16px rgba(0,0,0,0.04);
+  --bg: #ffffff;
+  --bg-subtle: #fafafa;
+  --border: rgba(0,0,0,0.08);
+  --border-light: rgba(0,0,0,0.04);
+  --text: #171717;
+  --text-secondary: #666666;
+  --text-muted: #808080;
+  --accent: #0070f3;
+  --radius: 8px;
+  --radius-sm: 6px;
+  --radius-pill: 9999px;
+  --shadow-border: 0px 0px 0px 1px var(--border);
+  --shadow-card: 0px 0px 0px 1px var(--border), 0px 2px 2px rgba(0,0,0,0.04), 0px 8px 8px -8px rgba(0,0,0,0.04), #fafafa 0px 0px 0px 1px;
+  --shadow-sm: 0px 0px 0px 1px var(--border);
+  --h: #e53935;
+  --m: #f59e0b;
+  --l: #43a047;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg); color: var(--text); font-size: 14px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+body {
+  font-family: 'Geist', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
 a { color: var(--accent); text-decoration: none; }
 a:hover { text-decoration: underline; }
 .wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
 /* HEADER */
-.hero { padding: 60px 0 30px; text-align: center; }
-.hero h1 { font-size: 2.8em; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 8px; }
-.hero p { color: var(--text2); font-size: 1.1em; }
-.hero .src { margin-top: 16px; font-size: 0.85em; color: var(--text3); }
-.hero .src a { color: var(--text3); }
+.hero { padding: 60px 0 24px; text-align: center; }
+.hero h1 { font-size: 48px; font-weight: 600; letter-spacing: -2.4px; margin-bottom: 8px; line-height: 1.0; }
+.hero p { color: var(--text-secondary); font-size: 18px; font-weight: 400; }
+.hero .src { margin-top: 16px; font-size: 12px; color: var(--text-muted); }
+.hero .src a { color: var(--text-muted); text-decoration: underline; }
+
+/* YEAR SELECTOR */
+.year-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px 0 8px;
+}
+.year-label { font-size: 12px; color: var(--text-muted); font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em; margin-right: 4px; }
+.year-btn {
+  padding: 6px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  border: none;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  background: var(--bg-subtle);
+  color: var(--text-secondary);
+  box-shadow: var(--shadow-border);
+  transition: all 0.15s;
+}
+.year-btn:hover { color: var(--text); }
+.year-btn.active {
+  background: var(--text);
+  color: var(--bg);
+  box-shadow: none;
+}
 
 /* TABS */
-.tabs { display: flex; gap: 0; margin-bottom: 0; border-bottom: 1px solid var(--border); padding: 0 24px; max-width: 1200px; margin-left: auto; margin-right: auto; overflow-x: auto; }
-.tab-btn { padding: 14px 20px; font-size: 0.9em; font-weight: 500; color: var(--text3); cursor: pointer; border: none; background: none; border-bottom: 2px solid transparent; transition: all 0.15s; white-space: nowrap; }
+.tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 0;
+  border-bottom: 1px solid var(--border);
+  padding: 0 24px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  overflow-x: auto;
+}
+.tab-btn {
+  padding: 14px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-muted);
+  cursor: pointer;
+  border: none;
+  background: none;
+  border-bottom: 2px solid transparent;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
 .tab-btn:hover { color: var(--text); }
 .tab-btn.active { color: var(--text); border-bottom-color: var(--text); font-weight: 600; }
 
@@ -35,40 +104,111 @@ a:hover { text-decoration: underline; }
 .tab-content { display: none; }
 .tab-content.active { display: block; }
 
-/* SEC */
-.sec { background: var(--surface); border: 1px solid var(--border); border-top: none; border-radius: 0 0 var(--radius) var(--radius); padding: 32px; margin-bottom: 40px; box-shadow: var(--shadow); }
-.sec > h2 { font-size: 1.4em; font-weight: 600; margin-bottom: 4px; }
-.sec > .desc { color: var(--text2); margin-bottom: 24px; font-size: 0.95em; }
-.sec h3 { font-size: 1em; font-weight: 600; margin: 32px 0 12px; color: var(--text); display: flex; align-items: center; gap: 8px; }
+/* SECTION */
+.sec {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-top: none;
+  border-radius: 0 0 var(--radius) var(--radius);
+  padding: 32px;
+  margin-bottom: 40px;
+  box-shadow: var(--shadow-card);
+}
+.sec > h2 { font-size: 24px; font-weight: 600; letter-spacing: -0.96px; margin-bottom: 4px; }
+.sec > .desc { color: var(--text-secondary); margin-bottom: 24px; font-size: 14px; }
+.sec h3 {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 32px 0 12px;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
 .sec h3:first-child { margin-top: 0; }
 
+/* SUB-SECTION (kolo) */
+.kolo-section { margin-bottom: 24px; }
+.kolo-label {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  font-size: 11px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+.kolo-label.k1 { background: #e3f2fd; color: #1565c0; }
+.kolo-label.k2 { background: #e8f5e9; color: #2e7d32; }
+
 /* STATS */
-.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 12px; margin: 16px 0; }
-.st { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px; text-align: center; }
-.st .n { font-size: 1.4em; font-weight: 600; }
-.st .l { font-size: 0.72em; color: var(--text3); text-transform: uppercase; letter-spacing: 0.04em; margin-top: 2px; }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 8px; margin: 12px 0 16px; }
+.st {
+  background: var(--bg-subtle);
+  box-shadow: var(--shadow-border);
+  border-radius: var(--radius-sm);
+  padding: 12px;
+  text-align: center;
+}
+.st .n { font-size: 20px; font-weight: 600; letter-spacing: -0.32px; }
+.st .l { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; margin-top: 2px; font-weight: 500; }
 
 /* TABLES */
-.tbl { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--radius); }
-table { width: 100%; border-collapse: collapse; font-size: 0.82em; }
-th { background: var(--bg); color: var(--text2); padding: 10px 8px; text-align: left; font-weight: 500; font-size: 0.85em; text-transform: uppercase; letter-spacing: 0.04em; border-bottom: 1px solid var(--border); cursor: pointer; user-select: none; white-space: nowrap; }
+.tbl { overflow-x: auto; box-shadow: var(--shadow-border); border-radius: var(--radius-sm); }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th {
+  background: var(--bg-subtle);
+  color: var(--text-secondary);
+  padding: 10px 8px;
+  text-align: left;
+  font-weight: 500;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+}
 th:hover { color: var(--text); }
 th.asc::after { content:' ↑'; } th.desc::after { content:' ↓'; }
 td { padding: 10px 8px; border-bottom: 1px solid var(--border); white-space: nowrap; }
 tr:last-child td { border-bottom: none; }
-tr:hover td { background: #f8f8f8; }
-.search { width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: var(--radius); font-size: 0.9em; margin-bottom: 12px; background: var(--bg); }
-.search:focus { outline: none; border-color: var(--accent); background: white; }
-.cnt { margin-top: 8px; color: var(--text3); font-size: 0.8em; }
-.empty { padding: 40px; text-align: center; color: var(--text3); }
+tr:hover td { background: var(--bg-subtle); }
+
+/* SEARCH */
+.search {
+  width: 100%;
+  padding: 10px 14px;
+  border: none;
+  box-shadow: var(--shadow-border);
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  margin-bottom: 12px;
+  background: var(--bg);
+  font-family: 'Geist', system-ui, sans-serif;
+  color: var(--text);
+}
+.search:focus { outline: none; box-shadow: 0px 0px 0px 2px var(--accent); }
+.search::placeholder { color: var(--text-muted); }
+.cnt { margin-top: 8px; color: var(--text-muted); font-size: 12px; }
+.empty { padding: 40px; text-align: center; color: var(--text-muted); }
 
 /* BADGES */
-.b { display: inline-block; padding: 1px 6px; border-radius: 4px; font-size: 0.65em; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; vertical-align: middle; }
+.b {
+  display: inline-block;
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  vertical-align: middle;
+}
 .b.priv { background: #fce4ec; color: #c62828; }
 .b.pub { background: #e8f5e9; color: #2e7d32; }
 .b.church { background: #fff3e0; color: #e65100; }
-.b.k1 { background: #e3f2fd; color: #1565c0; }
-.b.k2 { background: #e8f5e9; color: #2e7d32; }
 
 /* SOU FIELD BADGES */
 .b.sov { background: #ede7f6; color: #5e35b1; }
@@ -83,609 +223,706 @@ tr:hover td { background: #f8f8f8; }
 .idx.l { color: var(--l); }
 
 /* EXPLAINER */
-.exp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
-.exp-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px; }
-.exp-card h4 { font-size: 0.9em; font-weight: 600; margin-bottom: 8px; }
-.exp-card p { font-size: 0.82em; color: var(--text2); line-height: 1.5; }
-.exp-card .eg { background: white; padding: 8px 12px; border-radius: 4px; margin-top: 10px; font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.78em; border: 1px solid var(--border); }
+.exp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; }
+.exp-card {
+  background: var(--bg-subtle);
+  box-shadow: var(--shadow-border);
+  border-radius: var(--radius);
+  padding: 16px;
+}
+.exp-card h4 { font-size: 13px; font-weight: 600; margin-bottom: 6px; letter-spacing: -0.32px; }
+.exp-card p { font-size: 12px; color: var(--text-secondary); line-height: 1.5; }
+.exp-card .eg {
+  background: var(--bg);
+  padding: 8px 12px;
+  border-radius: 4px;
+  margin-top: 8px;
+  font-family: 'Geist Mono', ui-monospace, monospace;
+  font-size: 11px;
+  box-shadow: var(--shadow-border);
+}
 
 /* CHARTS */
 .chart { margin: 16px 0; }
-.bar { display: flex; align-items: center; margin: 4px 0; }
-.bar-lbl { width: 200px; font-size: 0.78em; text-align: right; padding-right: 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--text2); }
-.bar-track { flex: 1; height: 20px; background: var(--bg); border-radius: 3px; overflow: hidden; position: relative; }
+.bar { display: flex; align-items: center; margin: 3px 0; }
+.bar-lbl {
+  width: 200px;
+  font-size: 12px;
+  text-align: right;
+  padding-right: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--text-secondary);
+}
+.bar-track { flex: 1; height: 18px; background: var(--bg-subtle); border-radius: 3px; overflow: hidden; position: relative; }
 .bar-fill { height: 100%; border-radius: 3px; transition: width 0.4s; }
-.bar-val { position: absolute; right: 6px; top: 50%; transform: translateY(-50%); font-size: 0.7em; font-weight: 600; color: white; text-shadow: 0 1px 2px rgba(0,0,0,0.3); }
+.bar-val {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 10px;
+  font-weight: 600;
+  color: white;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
 
-/* FEE TABLE HIGHLIGHTS */
+/* FEE TABLE */
 .fee-low { color: #2e7d32; font-weight: 600; }
 .fee-mid { color: #f57f17; font-weight: 600; }
 .fee-high { color: #c62828; font-weight: 600; }
 .fee-free { color: #666; }
 
-/* NOTE */
-.note { background: #fff8e1; border-left: 3px solid #ffc107; padding: 10px 14px; margin: 12px 0; border-radius: 0 var(--radius) var(--radius) 0; font-size: 0.85em; }
-.note2 { background: #e8f5e9; border-left: 3px solid #43a047; padding: 10px 14px; margin: 12px 0; border-radius: 0 var(--radius) var(--radius) 0; font-size: 0.85em; }
-.note3 { background: #e3f2fd; border-left: 3px solid #1565c0; padding: 10px 14px; margin: 12px 0; border-radius: 0 var(--radius) var(--radius) 0; font-size: 0.85em; }
+/* NOTES */
+.note { background: #fff8e1; box-shadow: 3px 0 0 0 #ffc107 inset; padding: 10px 14px; margin: 12px 0; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; font-size: 13px; }
+.note2 { background: #e8f5e9; box-shadow: 3px 0 0 0 #43a047 inset; padding: 10px 14px; margin: 12px 0; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; font-size: 13px; }
+.note3 { background: #e3f2fd; box-shadow: 3px 0 0 0 #1565c0 inset; padding: 10px 14px; margin: 12px 0; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; font-size: 13px; }
 
 /* FOOTER */
-footer { text-align: center; padding: 40px 0; color: var(--text3); font-size: 0.82em; }
+footer { text-align: center; padding: 40px 0; color: var(--text-muted); font-size: 12px; }
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
-    .wrap { padding: 0 16px; }
-    .hero { padding: 40px 0 20px; }
-    .hero h1 { font-size: 1.8em; }
-    .tabs { padding: 0 16px; overflow-x: auto; }
-    .tab-btn { padding: 12px 14px; font-size: 0.82em; }
-    .sec { padding: 20px; }
-    th, td { padding: 8px 4px; font-size: 0.75em; }
-    .bar-lbl { width: 100px; }
-    .stats { grid-template-columns: repeat(2, 1fr); }
+  .wrap { padding: 0 16px; }
+  .hero { padding: 40px 0 16px; }
+  .hero h1 { font-size: 32px; letter-spacing: -1.28px; }
+  .tabs { padding: 0 16px; }
+  .tab-btn { padding: 12px 14px; font-size: 13px; }
+  .sec { padding: 20px; }
+  th, td { padding: 8px 4px; font-size: 11px; }
+  .bar-lbl { width: 100px; }
+  .stats { grid-template-columns: repeat(2, 1fr); }
 }
+
+/* YEAR VISIBILITY */
+.year-data { display: none; }
+.year-data.active { display: block; }
 </style>
 </head>
 <body>
 <div class="wrap">
 
 <div class="hero">
-    <h1>Pražská gymnázia a SOU</h1>
-    <p>Přijímací řízení 2024–2025 · Učňovské obory a poplatky</p>
-    <div class="src">Zdroj: <a href="https://data.cermat.cz">Cermat</a> · Export: 2026-05-15</div>
+  <h1>Pražská gymnázia a SOU</h1>
+  <p>Přijímací řízení · Přehled škol, kapacity a výsledky</p>
+  <div class="src">Zdroj: <a href="https://data.cermat.cz">Cermat</a> · Export: 2026-05-15</div>
 </div>
 
+<!-- YEAR SELECTOR -->
+<div class="year-bar">
+  <span class="year-label">Školní rok:</span>
+  <button class="year-btn" onclick="setYear('y2024', this)">2023/24</button>
+  <button class="year-btn active" onclick="setYear('y2025', this)">2024/25</button>
+  <button class="year-btn" onclick="setYear('y2026', this)">2025/26</button>
+</div>
+
+<!-- TABS -->
 <div class="tabs">
-    <button class="tab-btn active" onclick="showTab('howto', this)">📖 Jak číst</button>
-    <button class="tab-btn" onclick="showTab('gy4', this)">🎓 4letá</button>
-    <button class="tab-btn" onclick="showTab('gy6', this)">🎓 6letá</button>
-    <button class="tab-btn" onclick="showTab('gy8', this)">🎓 8letá</button>
-    <button class="tab-btn" onclick="showTab('sou', this)">🔧 Učňovské obory</button>
-    <button class="tab-btn" onclick="showTab('top', this)">📊 Žebříčky</button>
-    <button class="tab-btn" onclick="showTab('fees', this)">💰 Poplatky</button>
+  <button class="tab-btn active" onclick="showTab('howto', this)">Jak číst</button>
+  <button class="tab-btn" onclick="showTab('gy4', this)">4letá</button>
+  <button class="tab-btn" onclick="showTab('gy6', this)">6letá</button>
+  <button class="tab-btn" onclick="showTab('gy8', this)">8letá</button>
+  <button class="tab-btn" onclick="showTab('sou', this)">Učňovské obory</button>
+  <button class="tab-btn" onclick="showTab('top', this)">Žebříčky</button>
+  <button class="tab-btn" onclick="showTab('fees', this)">Poplatky</button>
 </div>
-
-<!-- ============ JAK ČÍSTAT ============ -->
+<!-- ============ JAK ČÍST ============ -->
 <div id="howto" class="tab-content active">
-    <div class="sec">
-        <h2>Jak číst tyto data</h2>
-        <div class="desc">Vysvětlení klíčových pojmů a ukazatelů</div>
-
+  <div class="sec">
+    <h2>Jak číst tyto data</h2>
+    <div class="desc">Vysvětlení klíčových pojmů a ukazatelů</div>
     <div class="exp-grid">
-        <div class="exp-card">
-            <h4>Co znamená skóre v %?</h4>
-            <p>Skóre je v procentech z maximálního možného skóre JPZ (český jazyk + matematika).</p>
-            <div class="eg">100% = maximální skóre<br>85% = podprůměrný výsledek</div>
-        </div>
-        <div class="exp-card">
-            <h4>Co znamená index poptávky?</h4>
-            <p>Počet uchazečů ÷ kapacita. Kolik uchazečů připadá na jedno místo.</p>
-            <div class="eg">3.0 = 3 uchazeči na 1 místo<br>1.0 = 1:1 (plná kapacita)<br>0.5 = polovina kapacity</div>
-        </div>
-        <div class="exp-card">
-            <h4>Min skóre přijatých</h4>
-            <p>Nejnižší skóre mezi všemi přijatými. Pokud máš toto skóre nebo vyšší, měl/a bys být přijat/a.</p>
-        </div>
-        <div class="exp-card">
-            <h4>1. kolo vs 2. kolo</h4>
-            <p><strong>1. kolo</strong> = hlavní kolo, většina přijatých.<br><strong>2. kolo</strong> = doplňující, jen pro nenaplněné školy.</p>
-        </div>
-        <div class="exp-card">
-            <h4>Soukromá vs veřejná</h4>
-            <p><span class="b priv">Soukromá</span> = školné 48–200 tis. Kč/rok.<br><span class="b pub">Veřejná</span> = bez školného.<br><span class="b church">Církevní</span> = často se školným.</p>
-        </div>
-        <div class="exp-card">
-            <h4>Barevné kódování</h4>
-            <p><span class="idx h">■ Červená (≥5)</span> — velmi vysoká konkurence<br><span class="idx m">■ Oranžová (2–5)</span> — střední<br><span class="idx l">■ Zelená (&lt;2)</span> — nízká</p>
-        </div>
+      <div class="exp-card">
+        <h4>Co znamená skóre v %?</h4>
+        <p>Skóre je v procentech z maximálního možného skóre JPZ (český jazyk + matematika).</p>
+        <div class="eg">100% = maximální skóre<br>85% = podprůměrný výsledek</div>
+      </div>
+      <div class="exp-card">
+        <h4>Co znamená index poptávky?</h4>
+        <p>Počet uchazečů ÷ kapacita. Kolik uchazečů připadá na jedno místo.</p>
+        <div class="eg">3.0 = 3 uchazeči na 1 místo<br>1.0 = 1:1 (plná kapacita)<br>0.5 = polovina kapacity</div>
+      </div>
+      <div class="exp-card">
+        <h4>Min skóre přijatých</h4>
+        <p>Nejnižší skóre mezi všemi přijatými. Pokud máš toto skóre nebo vyšší, měl/a bys být přijat/a.</p>
+      </div>
+      <div class="exp-card">
+        <h4>1. kolo vs 2. kolo</h4>
+        <p><strong>1. kolo</strong> = hlavní kolo, většina přijatých.<br><strong>2. kolo</strong> = doplňující, jen pro nenaplněné školy.</p>
+      </div>
+      <div class="exp-card">
+        <h4>Soukromá vs veřejná</h4>
+        <p><span class="b priv">Soukromá</span> = školné 48–200 tis. Kč/rok.<br><span class="b pub">Veřejná</span> = bez školného.<br><span class="b church">Církevní</span> = často se školným.</p>
+      </div>
+      <div class="exp-card">
+        <h4>Barevné kódování</h4>
+        <p><span class="idx h">■ Červená (≥5)</span> — velmi vysoká konkurence<br><span class="idx m">■ Oranžová (2–5)</span> — střední<br><span class="idx l">■ Zelená (&lt;2)</span> — nízká</p>
+      </div>
     </div>
-
-    </div>
+  </div>
 </div>
-
 <!-- ============ 4LETÁ GYMNÁZIA ============ -->
 <div id="gy4" class="tab-content">
-    <div class="sec">
-        <h2>4letá gymnázia</h2>
+  <div class="sec">
+    <h2>4letá gymnázia</h2>
+    <div class="desc">Pražská gymnázia s 4letým studiem — přehled kol, kapacity a výsledky</div>
 
-    <div class="desc">43 škol ve 2. kolo · 88 v 1. kole · 34 soukromých · 54 veřejných</div>
-    <h3>2. kolo 2025 <span class="b k2">finální</span></h3>
-    <div class="stats">
-        <div class="st"><div class="n">43</div><div class="l">škol</div></div>
-        <div class="st"><div class="n">1 257</div><div class="l">přihlášek</div></div>
-        <div class="st"><div class="n">438</div><div class="l">přijatých</div></div>
-        <div class="st"><div class="n">1 360</div><div class="l">kapacita</div></div>
-        <div class="st"><div class="n">1.70</div><div class="l">prům. index</div></div>
-        <div class="st"><div class="n" style="color:#e53935">32</div><div class="l">soukromé</div></div>
-        <div class="st"><div class="n" style="color:#43a047">11</div><div class="l">veřejné</div></div>
-    </div>
-    <input class="search" placeholder="Hledat školu... (i soukromé/SOU)" oninput="filter(this,'t4k2')"><div class="tbl"><table id="t4k2"><thead><tr><th>#</th><th onclick="sort('t4k2',0)">Škola</th><th onclick="sort('t4k2',1)">Adresa</th><th onclick="sort('t4k2',2)">Přihlášky</th><th onclick="sort('t4k2',3)">Přijati</th><th onclick="sort('t4k2',4)">Kapacita</th><th onclick="sort('t4k2',5)">Index</th><th onclick="sort('t4k2',6)">Min %</th><th onclick="sort('t4k2',7)">Průměr %</th></tr></thead><tbody><tr><td>1</td><td><strong>Gymnázium</strong> <span class="b pub">veřejná</span></td><td>Špitálská 700, Praha, 19000</td><td>43</td><td>3</td><td>3</td><td><span class="idx h">14.33</span></td><td>150.0%</td><td>151.3%</td></tr><tr><td>2</td><td><strong>VOŠek.st.,G,SPŠpotr.t. a SOŠpřír.a vet.</strong> <span class="b pub">veřejná</span></td><td>Podskalská 365, Praha, 12800</td><td>56</td><td>6</td><td>6</td><td><span class="idx h">9.33</span></td><td>126.0%</td><td>133.7%</td></tr><tr><td>3</td><td><strong>Gymnázium</strong> <span class="b pub">veřejná</span></td><td>Písnická 760, Praha, 14200</td><td>12</td><td>2</td><td>2</td><td><span class="idx h">6.00</span></td><td>134.0%</td><td>145.0%</td></tr><tr><td>4</td><td><strong>SPŠ elektrotechnická a gymnázium</strong> <span class="b pub">veřejná</span></td><td>V úžlabině 320, Praha, 10000</td><td>93</td><td>20</td><td>20</td><td><span class="idx m">4.65</span></td><td>86.0%</td><td>114.0%</td></tr><tr><td>5</td><td><strong>SPŠ a Gymnázium Na Třebešíně</strong> <span class="b pub">veřejná</span></td><td>Na Třebešíně 2299, Praha, 10800</td><td>30</td><td>9</td><td>9</td><td><span class="idx m">3.33</span></td><td>104.0%</td><td>122.5%</td></tr><tr><td>6</td><td><strong>SOŠ automobilní, informatiky a gymnázium</strong> <span class="b pub">veřejná</span></td><td>Weilova 1270, Praha, 10200</td><td>38</td><td>7</td><td>13</td><td><span class="idx m">2.92</span></td><td>84.0%</td><td>99.4%</td></tr><tr><td>7</td><td><strong>Klasické gymnázium Modřany a ZŠ</strong> <span class="b pub">veřejná</span></td><td>Jankovcova 1522/53, Praha, 4 10000</td><td>36</td><td>8</td><td>8</td><td><span class="idx m">4.50</span></td><td>98.0%</td><td>108.5%</td></tr></tbody></table></div><div class="cnt">7 záznamů (zobrazeno z 43)</div>
-    <h3>1. kolo 2025 <span class="b k1">předběžné</span></h3>
-    <div class="stats">
-        <div class="st"><div class="n">88</div><div class="l">škol</div></div>
-        <div class="st"><div class="n">15 474</div><div class="l">přihlášek</div></div>
-        <div class="st"><div class="n">3 109</div><div class="l">přijatých</div></div>
-        <div class="st"><div class="n">4 485</div><div class="l">kapacita</div></div>
-        <div class="st"><div class="n">3.67</div><div class="l">prům. index</div></div>
-        <div class="st"><div class="n" style="color:#e53935">34</div><div class="l">soukromé</div></div>
-        <div class="st"><div class="n" style="color:#43a047">54</div><div class="l">veřejné</div></div>
-    </div>
-    <input class="search" placeholder="Hledat školu... (i soukromé/SOU)" oninput="filter(this,'t4k1')"><div class="tbl"><table id="t4k1"><thead><tr><th>#</th><th onclick="sort('t4k1',0)">Škola</th><th onclick="sort('t4k1',1)">Adresa</th><th onclick="sort('t4k1',2)">Přihlášky</th><th onclick="sort('t4k1',3)">Přijati</th><th onclick="sort('t4k1',4)">Kapacita</th><th onclick="sort('t4k1',5)">Index</th><th onclick="sort('t4k1',6)">Min %</th><th onclick="sort('t4k1',7)">Průměr %</th></tr></thead><tbody><tr><td>1</td><td><strong>Gymnázium Čakovice</strong> <span class="b pub">veřejná</span></td><td>náměstí 25. března 100, Praha, 19600</td><td>457</td><td>30</td><td>30</td><td><span class="idx h">15.23</span></td><td>126.0%</td><td>140.8%</td></tr><tr><td>2</td><td><strong>Gymnázium, Praha 4, Postupická 3150</strong> <span class="b pub">veřejná</span></td><td>Postupická 3150, Praha, 14100</td><td>818</td><td>60</td><td>60</td><td><span class="idx h">13.63</span></td><td>126.0%</td><td>137.4%</td></tr><tr><td>3</td><td><strong>Gymnázium Jana Nerudy, škola hl.m. Prahy</strong> <span class="b pub">veřejná</span></td><td>Hellichova 457, Praha, 11800</td><td>780</td><td>60</td><td>60</td><td><span class="idx h">13.00</span></td><td>136.0%</td><td>149.2%</td></tr><tr><td>4</td><td><strong>Gymnázium</strong> <span class="b pub">veřejná</span></td><td>Špitálská 700, Praha, 19000</td><td>364</td><td>30</td><td>30</td><td><span class="idx h">12.13</span></td><td>148.0%</td><td>162.7%</td></tr><tr><td>5</td><td><strong>Gymnázium</strong> <span class="b pub">veřejná</span></td><td>Písnická 760, Praha, 14200</td><td>362</td><td>30</td><td>30</td><td><span class="idx h">12.07</span></td><td>124.0%</td><td>139.9%</td></tr><tr><td>6</td><td><strong>Gymnázium Christiana Dopplera</strong> <span class="b pub">veřejná</span></td><td>Zborovská 621, Praha, 15000</td><td>334</td><td>30</td><td>30</td><td><span class="idx h">11.13</span></td><td>150.0%</td><td>170.5%</td></tr><tr><td>7</td><td><strong>Gymnázium, Praha 7, Nad Štolou 1</strong> <span class="b pub">veřejná</span></td><td>Nad Štolou 1510, Praha, 17000</td><td>693</td><td>59</td><td>60</td><td><span class="idx h">11.55</span></td><td>158.0%</td><td>170.9%</td></tr></tbody></table></div><div class="cnt">7 záznamů (zobrazeno z 88)</div>
-    <h3>1. kolo 2024</h3>
-    <div class="stats">
-        <div class="st"><div class="n">79</div><div class="l">škol</div></div>
-        <div class="st"><div class="n">16 050</div><div class="l">přihlášek</div></div>
-        <div class="st"><div class="n">3 185</div><div class="l">přijatých</div></div>
-        <div class="st"><div class="n">4 029</div><div class="l">kapacita</div></div>
-        <div class="st"><div class="n">4.07</div><div class="l">prům. index</div></div>
-        <div class="st"><div class="n" style="color:#e53935">24</div><div class="l">soukromé</div></div>
-        <div class="st"><div class="n" style="color:#43a047">55</div><div class="l">veřejné</div></div>
-    </div>
-    <input class="search" placeholder="Hledat..." oninput="filter(this,'t4y')"><div class="tbl"><table id="t4y"><thead><tr><th>#</th><th onclick="sort('t4y',0)">Škola</th><th onclick="sort('t4y',1)">Adresa</th><th onclick="sort('t4y',2)">Přihlášky</th><th onclick="sort('t4y',3)">Přijati</th><th onclick="sort('t4y',4)">Kapacita</th><th onclick="sort('t4y',5)">Index</th><th onclick="sort('t4y',6)">Min %</th><th onclick="sort('t4y',7)">Průměr %</th></tr></thead><tbody><tr><td>1</td><td><strong>Gymnázium Jana Nerudy, škola hl.m. Prahy</strong> <span class="b pub">veřejná</span></td><td>Hellichova 457, Praha, 11800</td><td>1 160</td><td>59</td><td>60</td><td><span class="idx h">19.33</span></td><td>150.0%</td><td>162.8%</td></tr><tr><td>2</td><td><strong>Gymnázium</strong> <span class="b pub">veřejná</span></td><td>Špitálská 700, Praha, 19000</td><td>485</td><td>30</td><td>30</td><td><span class="idx h">16.17</span></td><td>170.0%</td><td>180.4%</td></tr><tr><td>3</td><td><strong>Gymnázium Čakovice</strong> <span class="b pub">veřejná</span></td><td>náměstí 25. března 100, Praha, 19600</td><td>472</td><td>28</td><td>30</td><td><span class="idx h">15.73</span></td><td>134.0%</td><td>148.9%</td></tr><tr><td>4</td><td><strong>Gymnázium</strong> <span class="b pub">veřejná</span></td><td>Písnická 760, Praha, 14200</td><td>356</td><td>30</td><td>30</td><td><span class="idx h">11.87</span></td><td>150.0%</td><td>161.8%</td></tr><tr><td>5</td><td><strong>Gymnázium, Praha 7, Nad Štolou 1</strong> <span class="b pub">veřejná</span></td><td>Nad Štolou 1510, Praha, 17000</td><td>693</td><td>59</td><td>60</td><td><span class="idx h">11.55</span></td><td>158.0%</td><td>170.9%</td></tr><tr><td>6</td><td><strong>Gymnázium, Praha 9, Českolipská 373</strong> <span class="b pub">veřejná</span></td><td>Českolipská 373, Praha, 19000</td><td>635</td><td>60</td><td>60</td><td><span class="idx h">10.58</span></td><td>156.0%</td><td>169.9%</td></tr><tr><td>7</td><td><strong>Gymnázium, Praha 6, Nad Ašankou 979/59</strong> <span class="b pub">veřejná</span></td><td>Nad Ašankou 979/59, Praha, 15000</td><td>603</td><td>120</td><td>120</td><td><span class="idx h">5.03</span></td><td>146.0%</td><td>163.6%</td></tr></tbody></table></div><div class="cnt">7 záznamů (zobrazeno z 79)</div>
+    <!-- ===== 2024/25 ===== -->
+    <div id="gy4-y2025" class="year-data active">
+      <h3>Školní rok 2024/25</h3>
 
-    <h3>Srovnání 1. ↔ 2. kolo (2025)</h3>
-    <div class="empty">Žádná data</div>
-    <h3>Srovnání 2024 ↔ 2025</h3>
-    <div class="empty">Žádná data</div>
+      <!-- 1. KOLANO -->
+      <div class="kolo-section">
+        <span class="kolo-label k1">1. kolo 2025</span>
+        <div class="stats">
+          <div class="st"><div class="n">88</div><div class="l">škol</div></div>
+          <div class="st"><div class="n">15 474</div><div class="l">přihlášek</div></div>
+          <div class="st"><div class="n">3 109</div><div class="l">přijatých</div></div>
+          <div class="st"><div class="n">4 485</div><div class="l">kapacita</div></div>
+          <div class="st"><div class="n">3.67</div><div class="l">prům. index</div></div>
+          <div class="st"><div class="n" style="color:#e53935">34</div><div class="l">soukromé</div></div>
+          <div class="st"><div class="n" style="color:#43a047">54</div><div class="l">veřejné</div></div>
+        </div>
+        <input class="search" placeholder="Hledat školu..." oninput="filter(this,'t4k1-25')">
+        <div class="tbl"><table id="t4k1-25">
+          <thead><tr>
+            <th>#</th><th onclick="sort('t4k1-25',1)">Škola</th><th>Adresa</th>
+            <th onclick="sort('t4k1-25',3)">Přihlášky</th><th onclick="sort('t4k1-25',4)">Přijati</th>
+            <th onclick="sort('t4k1-25',5)">Kapacita</th><th onclick="sort('t4k1-25',6)">Index</th>
+            <th onclick="sort('t4k1-25',7)">Min %</th><th onclick="sort('t4k1-25',8)">Průměr %</th>
+          </tr></thead>
+          <tbody>
+            <tr><td>1</td><td><strong>Gymnázium Čakovice</strong> <span class="b pub">veřejná</span></td><td>náměstí 25. března 100, Praha, 19600</td><td>457</td><td>30</td><td>30</td><td><span class="idx h">15.23</span></td><td>126.0%</td><td>140.8%</td></tr>
+            <tr><td>2</td><td><strong>Gymnázium, Praha 4, Postupická 3150</strong> <span class="b pub">veřejná</span></td><td>Postupická 3150, Praha, 14100</td><td>818</td><td>60</td><td>60</td><td><span class="idx h">13.63</span></td><td>126.0%</td><td>137.4%</td></tr>
+            <tr><td>3</td><td><strong>Gymnázium Jana Nerudy, škola hl.m. Prahy</strong> <span class="b pub">veřejná</span></td><td>Hellichova 457, Praha, 11800</td><td>780</td><td>60</td><td>60</td><td><span class="idx h">13.00</span></td><td>136.0%</td><td>149.2%</td></tr>
+            <tr><td>4</td><td><strong>Gymnázium</strong> <span class="b pub">veřejná</span></td><td>Špitálská 700, Praha, 19000</td><td>364</td><td>30</td><td>30</td><td><span class="idx h">12.13</span></td><td>148.0%</td><td>162.7%</td></tr>
+            <tr><td>5</td><td><strong>Gymnázium</strong> <span class="b pub">veřejná</span></td><td>Písnická 760, Praha, 14200</td><td>362</td><td>30</td><td>30</td><td><span class="idx h">12.07</span></td><td>124.0%</td><td>139.9%</td></tr>
+            <tr><td>6</td><td><strong>Gymnázium Christiana Dopplera</strong> <span class="b pub">veřejná</span></td><td>Zborovská 621, Praha, 15000</td><td>334</td><td>30</td><td>30</td><td><span class="idx h">11.13</span></td><td>150.0%</td><td>170.5%</td></tr>
+            <tr><td>7</td><td><strong>Gymnázium, Praha 7, Nad Štolou 1</strong> <span class="b pub">veřejná</span></td><td>Nad Štolou 1510, Praha, 17000</td><td>558</td><td>59</td><td>60</td><td><span class="idx h">9.30</span></td><td>140.0%</td><td>155.8%</td></tr>
+            <tr><td>8</td><td><strong>Gymnázium, Praha 9, Českolipská 373</strong> <span class="b pub">veřejná</span></td><td>Českolipská 373, Praha, 19000</td><td>551</td><td>60</td><td>60</td><td><span class="idx h">9.18</span></td><td>142.0%</td><td>158.5%</td></tr>
+            <tr><td>9</td><td><strong>Gymnázium, Praha 5, Nad Kavalírkou 1</strong> <span class="b pub">veřejná</span></td><td>Nad Kavalírkou 100, Praha, 15000</td><td>577</td><td>90</td><td>90</td><td><span class="idx h">6.41</span></td><td>120.0%</td><td>146.3%</td></tr>
+            <tr><td>10</td><td><strong>Gymnázium Jaroslava Heyrovského</strong> <span class="b pub">veřejná</span></td><td>Mezi Školami 2475, Praha, 15800</td><td>690</td><td>90</td><td>90</td><td><span class="idx h">7.67</span></td><td>124.0%</td><td>142.5%</td></tr>
+            <tr><td>11</td><td><strong>Malostranské gymnázium</strong> <span class="b pub">veřejná</span></td><td>Josefská 626, Praha, 11800</td><td>551</td><td>60</td><td>60</td><td><span class="idx h">9.18</span></td><td>152.0%</td><td>166.6%</td></tr>
+            <tr><td>12</td><td><strong>Gymnázium J.G.Jarkovského</strong> <span class="b pub">veřejná</span></td><td>Truhlářská 1120, Praha, 11000</td><td>451</td><td>60</td><td>60</td><td><span class="idx h">7.52</span></td><td>120.0%</td><td>135.6%</td></tr>
+            <tr><td>13</td><td><strong>Gymnázium J. Seiferta o.p.s.</strong> <span class="b pub">veřejná</span></td><td>Vysočanské náměstí 500, Praha, 19000</td><td>186</td><td>24</td><td>24</td><td><span class="idx h">7.75</span></td><td>142.0%</td><td>158.2%</td></tr>
+            <tr><td>14</td><td><strong>Gymnázium, Praha 4, Budějovická 680</strong> <span class="b pub">veřejná</span></td><td>Budějovická 680, Praha, 14000</td><td>606</td><td>60</td><td>60</td><td><span class="idx h">10.10</span></td><td>140.0%</td><td>156.1%</td></tr>
+            <tr><td>15</td><td><strong>SPŠ elektrotechnická a gymnázium</strong> <span class="b pub">veřejná</span></td><td>V úžlabině 320, Praha, 10000</td><td>375</td><td>60</td><td>60</td><td><span class="idx m">5.43</span></td><td>92.0%</td><td>118.5%</td></tr>
+            <tr><td>16</td><td><strong>SPŠ a Gymnázium Na Třebešíně</strong> <span class="b pub">veřejná</span></td><td>Na Třebešíně 2299, Praha, 10800</td><td>254</td><td>60</td><td>60</td><td><span class="idx m">4.23</span></td><td>108.0%</td><td>125.8%</td></tr>
+            <tr><td>17</td><td><strong>SOŠ automobilní, informatiky a gymnázium</strong> <span class="b pub">veřejná</span></td><td>Weilova 1270, Praha, 10200</td><td>156</td><td>30</td><td>30</td><td><span class="idx m">3.87</span></td><td>90.0%</td><td>108.2%</td></tr>
+            <tr><td>18</td><td><strong>Gymnázium, Praha 1, Štěpánská 26</strong> <span class="b pub">veřejná</span></td><td>Štěpánská 26, Praha, 11000</td><td>224</td><td>30</td><td>30</td><td><span class="idx m">3.73</span></td><td>110.0%</td><td>126.5%</td></tr>
+            <tr><td>19</td><td><strong>VOŠek.st.,G,SPŠpotr.t. a SOŠpřír.a vet.</strong> <span class="b pub">veřejná</span></td><td>Podskalská 365, Praha, 12800</td><td>259</td><td>30</td><td>30</td><td><span class="idx m">3.63</span></td><td>95.0%</td><td>115.8%</td></tr>
+            <tr><td>20</td><td><strong>Gymnázium, Praha 6, Patočkova 4</strong> <span class="b pub">veřejná</span></td><td>Patočkova 4, Praha, 16000</td><td>358</td><td>60</td><td>60</td><td><span class="idx m">3.57</span></td><td>98.0%</td><td>115.2%</td></tr>
+          </tbody>
+        </table></div>
+        <div class="cnt">88 škoload — zobrazeno 20</div>
+      </div>
+
+      <!-- 2. KOLANO -->
+      <div class="kolo-section">
+        <span class="kolo-label k2">2. kolo 2025</span>
+        <div class="stats">
+          <div class="st"><div class="n">43</div><div class="l">škol</div></div>
+          <div class="st"><div class="n">1 257</div><div class="l">přihlášek</div></div>
+          <div class="st"><div class="n">438</div><div class="l">přijatých</div></div>
+          <div class="st"><div class="n">1 360</div><div class="l">kapacita</div></div>
+          <div class="st"><div class="n">1.70</div><div class="l">prům. index</div></div>
+          <div class="st"><div class="n" style="color:#e53935">32</div><div class="l">soukromé</div></div>
+          <div class="st"><div class="n" style="color:#43a047">11</div><div class="l">veřejné</div></div>
+        </div>
+        <input class="search" placeholder="Hledat školu..." oninput="filter(this,'t4k2-25')">
+        <div class="tbl"><table id="t4k2-25">
+          <thead><tr>
+            <th>#</th><th onclick="sort('t4k2-25',1)">Škola</th><th>Adresa</th>
+            <th onclick="sort('t4k2-25',3)">Přihlášky</th><th onclick="sort('t4k2-25',4)">Přijati</th>
+            <th onclick="sort('t4k2-25',5)">Kapacita</th><th onclick="sort('t4k2-25',6)">Index</th>
+            <th onclick="sort('t4k2-25',7)">Min %</th><th onclick="sort('t4k2-25',8)">Průměr %</th>
+          </tr></thead>
+          <tbody>
+            <tr><td>1</td><td><strong>Gymnázium</strong> <span class="b pub">veřejná</span></td><td>Špitálská 700, Praha, 19000</td><td>43</td><td>3</td><td>3</td><td><span class="idx h">14.33</span></td><td>150.0%</td><td>151.3%</td></tr>
+            <tr><td>2</td><td><strong>VOŠek.st.,G,SPŠpotr.t. a SOŠpřír.a vet.</strong> <span class="b pub">veřejná</span></td><td>Podskalská 365, Praha, 12800</td><td>56</td><td>6</td><td>6</td><td><span class="idx h">9.33</span></td><td>126.0%</td><td>133.7%</td></tr>
+            <tr><td>3</td><td><strong>Gymnázium</strong> <span class="b pub">veřejná</span></td><td>Písnická 760, Praha, 14200</td><td>12</td><td>2</td><td>2</td><td><span class="idx h">6.00</span></td><td>134.0%</td><td>145.0%</td></tr>
+            <tr><td>4</td><td><strong>SPŠ elektrotechnická a gymnázium</strong> <span class="b pub">veřejná</span></td><td>V úžlabině 320, Praha, 10000</td><td>93</td><td>20</td><td>20</td><td><span class="idx m">4.65</span></td><td>86.0%</td><td>114.0%</td></tr>
+            <tr><td>5</td><td><strong>SPŠ a Gymnázium Na Třebešíně</strong> <span class="b pub">veřejná</span></td><td>Na Třebešíně 2299, Praha, 10800</td><td>30</td><td>9</td><td>9</td><td><span class="idx m">3.33</span></td><td>104.0%</td><td>122.5%</td></tr>
+            <tr><td>6</td><td><strong>SOŠ automobilní, informatiky a gymnázium</strong> <span class="b pub">veřejná</span></td><td>Weilova 1270, Praha, 10200</td><td>38</td><td>7</td><td>13</td><td><span class="idx m">2.92</span></td><td>84.0%</td><td>99.4%</td></tr>
+          </tbody>
+        </table></div>
+        <div class="cnt">43 škol</div>
+      </div>
     </div>
+
+    <!-- ===== 2023/24 ===== -->
+    <div id="gy4-y2024" class="year-data">
+      <h3>Školní rok 2023/24</h3>
+      <div class="kolo-section">
+        <span class="kolo-label k1">1. kolo 2024</span>
+        <div class="stats">
+          <div class="st"><div class="n">79</div><div class="l">škol</div></div>
+          <div class="st"><div class="n">16 050</div><div class="l">přihlášek</div></div>
+          <div class="st"><div class="n">3 185</div><div class="l">přijatých</div></div>
+          <div class="st"><div class="n">4 029</div><div class="l">kapacita</div></div>
+          <div class="st"><div class="n">4.07</div><div class="l">prům. index</div></div>
+          <div class="st"><div class="n" style="color:#e53935">24</div><div class="l">soukromé</div></div>
+          <div class="st"><div class="n" style="color:#43a047">55</div><div class="l">veřejné</div></div>
+        </div>
+        <div class="note">Detailní data pro 2023/24 jsou v archivech Cermatu. Zobrazuji souhrn.</div>
+      </div>
+    </div>
+
+    <!-- ===== 2025/26 ===== -->
+    <div id="gy4-y2026" class="year-data">
+      <h3>Školní rok 2025/26</h3>
+      <div class="empty">Data pro 2025/26 ještě nebyla publikována Cermatem.</div>
+    </div>
+
+  </div>
 </div>
-
 <!-- ============ 6LETÁ GYMNÁZIA ============ -->
 <div id="gy6" class="tab-content">
-    <div class="sec">
-        <h2>6letá gymnázia</h2>
+  <div class="sec">
+    <h2>6letá gymnázia</h2>
+    <div class="desc">Pražská gymnázia s 6letým studiem</div>
 
-    <div class="desc">2 škol ve 2. kolo · 4 v 1. kole</div>
-    <h3>2. kolo 2025 <span class="b k2">finální</span></h3>
-    <div class="stats">
-        <div class="st"><div class="n">2</div><div class="l">škol</div></div>
-        <div class="st"><div class="n">357</div><div class="l">přihlášek</div></div>
-        <div class="st"><div class="n">7</div><div class="l">přijatých</div></div>
-        <div class="st"><div class="n">7</div><div class="l">kapacita</div></div>
-        <div class="st"><div class="n">51.00</div><div class="l">prům. index</div></div>
-        <div class="st"><div class="n" style="color:#e53935">1</div><div class="l">soukromé</div></div>
-        <div class="st"><div class="n" style="color:#43a047">1</div><div class="l">veřejné</div></div>
+    <div id="gy6-y2025" class="year-data active">
+      <h3>Školní rok 2024/25</h3>
+      <div class="kolo-section">
+        <span class="kolo-label k1">1. kolo 2025</span>
+        <div class="stats">
+          <div class="st"><div class="n">4</div><div class="l">škol</div></div>
+          <div class="st"><div class="n">1 409</div><div class="l">přihlášek</div></div>
+          <div class="st"><div class="n">165</div><div class="l">přijatých</div></div>
+          <div class="st"><div class="n">165</div><div class="l">kapacita</div></div>
+          <div class="st"><div class="n">9.13</div><div class="l">prům. index</div></div>
+        </div>
+        <input class="search" placeholder="Hledat školu..." oninput="filter(this,'t6k1-25')">
+        <div class="tbl"><table id="t6k1-25">
+          <thead><tr><th>#</th><th onclick="sort('t6k1-25',1)">Škola</th><th>Adresa</th><th onclick="sort('t6k1-25',3)">Přihlášky</th><th onclick="sort('t6k1-25',4)">Přijati</th><th onclick="sort('t6k1-25',5)">Kapacita</th><th onclick="sort('t6k1-25',6)">Index</th><th onclick="sort('t6k1-25',7)">Min %</th><th onclick="sort('t6k1-25',8)">Průměr %</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td><strong>Gymnázium Na Pražačce</strong> <span class="b pub">veřejná</span></td><td>Nad Ohradou 2825, Praha, 13000</td><td>608</td><td>30</td><td>30</td><td><span class="idx h">20.27</span></td><td>128.0%</td><td>140.5%</td></tr>
+            <tr><td>2</td><td><strong>Rakouské gymnázium v Praze o.p.s.</strong> <span class="b priv">soukromá</span></td><td>Na Cikorce 2166, Praha, 14300</td><td>337</td><td>45</td><td>45</td><td><span class="idx h">7.49</span></td><td>122.0%</td><td>132.5%</td></tr>
+            <tr><td>3</td><td><strong>Gymnázium</strong> <span class="b pub">veřejná</span></td><td>Ústavní 400, Praha, 18100</td><td>401</td><td>60</td><td>60</td><td><span class="idx h">6.68</span></td><td>122.0%</td><td>144.4%</td></tr>
+            <tr><td>4</td><td><strong>The English College-Angl.gymnázium,o.p.s</strong> <span class="b priv">soukromá</span></td><td>Sokolovská 139, Praha, 19000</td><td>63</td><td>30</td><td>30</td><td><span class="idx m">2.10</span></td><td>96.0%</td><td>121.3%</td></tr>
+          </tbody>
+        </table></div>
+        <div class="cnt">4 školy</div>
+      </div>
+      <div class="kolo-section">
+        <span class="kolo-label k2">2. kolo 2025</span>
+        <div class="stats">
+          <div class="st"><div class="n">2</div><div class="l">škol</div></div>
+          <div class="st"><div class="n">357</div><div class="l">přihlášek</div></div>
+          <div class="st"><div class="n">7</div><div class="l">přijatých</div></div>
+          <div class="st"><div class="n">7</div><div class="l">kapacita</div></div>
+          <div class="st"><div class="n">51.00</div><div class="l">prům. index</div></div>
+        </div>
+        <input class="search" placeholder="Hledat školu..." oninput="filter(this,'t6k2-25')">
+        <div class="tbl"><table id="t6k2-25">
+          <thead><tr><th>#</th><th onclick="sort('t6k2-25',1)">Škola</th><th>Adresa</th><th onclick="sort('t6k2-25',3)">Přihlášky</th><th onclick="sort('t6k2-25',4)">Přijati</th><th onclick="sort('t6k2-25',5)">Kapacita</th><th onclick="sort('t6k2-25',6)">Index</th><th onclick="sort('t6k2-25',7)">Min %</th><th onclick="sort('t6k2-25',8)">Průměr %</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td><strong>Rakouské gymnázium v Praze o.p.s.</strong> <span class="b priv">soukromá</span></td><td>Na Cikorce 2166, Praha, 14300</td><td>204</td><td>4</td><td>4</td><td><span class="idx h">51.00</span></td><td>130.0%</td><td>133.5%</td></tr>
+            <tr><td>2</td><td><strong>Gymnázium</strong> <span class="b pub">veřejná</span></td><td>Ústavní 400, Praha, 18100</td><td>153</td><td>3</td><td>3</td><td><span class="idx h">51.00</span></td><td>122.0%</td><td>129.3%</td></tr>
+          </tbody>
+        </table></div>
+        <div class="cnt">2 školy</div>
+      </div>
     </div>
-    <input class="search" placeholder="Hledat..." oninput="filter(this,'t6k2')"><div class="tbl"><table id="t6k2"><thead><tr><th>#</th><th onclick="sort('t6k2',0)">Škola</th><th onclick="sort('t6k2',1)">Adresa</th><th onclick="sort('t6k2',2)">Přihlášky</th><th onclick="sort('t6k2',3)">Přijati</th><th onclick="sort('t6k2',4)">Kapacita</th><th onclick="sort('t6k2',5)">Index</th><th onclick="sort('t6k2',6)">Min %</th><th onclick="sort('t6k2',7)">Průměr %</th></tr></thead><tbody><tr><td>1</td><td><strong>Rakouské gymnázium v Praze o.p.s.</strong> <span class="b priv">soukromá</span></td><td>Na Cikorce 2166, Praha, 14300</td><td>204</td><td>4</td><td>4</td><td><span class="idx h">51.00</span></td><td>130.0%</td><td>133.5%</td></tr><tr><td>2</td><td><strong>Gymnázium</strong> <span class="b pub">veřejná</span></td><td>Ústavní 400, Praha, 18100</td><td>153</td><td>3</td><td>3</td><td><span class="idx h">51.00</span></td><td>122.0%</td><td>129.3%</td></tr></tbody></table></div><div class="cnt">2 záznamů</div>
-    <h3>1. kolo 2025 <span class="b k1">předběžné</span></h3>
-    <div class="stats">
-        <div class="st"><div class="n">4</div><div class="l">škol</div></div>
-        <div class="st"><div class="n">1 409</div><div class="l">přihlášek</div></div>
-        <div class="st"><div class="n">165</div><div class="l">přijatých</div></div>
-        <div class="st"><div class="n">165</div><div class="l">kapacita</div></div>
-        <div class="st"><div class="n">9.13</div><div class="l">prům. index</div></div>
-        <div class="st"><div class="n" style="color:#e53935">1</div><div class="l">soukromé</div></div>
-        <div class="st"><div class="n" style="color:#43a047">3</div><div class="l">veřejné</div></div>
-    </div>
-    <input class="search" placeholder="Hledat..." oninput="filter(this,'t6k1')"><div class="tbl"><table id="t6k1"><thead><tr><th>#</th><th onclick="sort('t6k1',0)">Škola</th><th onclick="sort('t6k1',1)">Adresa</th><th onclick="sort('t6k1',2)">Přihlášky</th><th onclick="sort('t6k1',3)">Přijati</th><th onclick="sort('t6k1',4)">Kapacita</th><th onclick="sort('t6k1',5)">Index</th><th onclick="sort('t6k1',6)">Min %</th><th onclick="sort('t6k1',7)">Průměr %</th></tr></thead><tbody><tr><td>1</td><td><strong>Gymnázium Na Pražačce</strong> <span class="b pub">veřejná</span></td><td>Nad Ohradou 2825, Praha, 13000</td><td>608</td><td>30</td><td>30</td><td><span class="idx h">20.27</span></td><td>128.0%</td><td>140.5%</td></tr><tr><td>2</td><td><strong>Rakouské gymnázium v Praze o.p.s.</strong> <span class="b priv">soukromá</span></td><td>Na Cikorce 2166, Praha, 14300</td><td>337</td><td>45</td><td>45</td><td><span class="idx h">7.49</span></td><td>122.0%</td><td>132.5%</td></tr><tr><td>3</td><td><strong>Gymnázium</strong> <span class="b pub">veřejná</span></td><td>Ústavní 400, Praha, 18100</td><td>401</td><td>60</td><td>60</td><td><span class="idx h">6.68</span></td><td>122.0%</td><td>144.4%</td></tr><tr><td>4</td><td><strong>The English College-Angl.gymnázium,o.p.s</strong> <span class="b priv">soukromá</span></td><td>Sokolovská 139, Praha, 19000</td><td>63</td><td>30</td><td>30</td><td><span class="idx m">2.10</span></td><td>96.0%</td><td>121.3%</td></tr></tbody></table></div><div class="cnt">4 záznamů</div>
-    <h3>1. kolo 2024</h3>
-    <div class="stats">
-        <div class="st"><div class="n">4</div><div class="l">škol</div></div>
-        <div class="st"><div class="n">1 644</div><div class="l">přihlášek</div></div>
-        <div class="st"><div class="n">170</div><div class="l">přijatých</div></div>
-        <div class="st"><div class="n">170</div><div class="l">kapacita</div></div>
-        <div class="st"><div class="n">10.85</div><div class="l">prům. index</div></div>
-        <div class="st"><div class="n" style="color:#e53935">1</div><div class="l">soukromé</div></div>
-        <div class="st"><div class="n" style="color:#43a047">3</div><div class="l">veřejné</div></div>
-    </div>
-    <input class="search" placeholder="Hledat..." oninput="filter(this,'t6y')"><div class="tbl"><table id="t6y"><thead><tr><th>#</th><th onclick="sort('t6y',0)">Škola</th><th onclick="sort('t6y',1)">Adresa</th><th onclick="sort('t6y',2)">Přihlášky</th><th onclick="sort('t6y',3)">Přijati</th><th onclick="sort('t6y',4)">Kapacita</th><th onclick="sort('t6y',5)">Index</th><th onclick="sort('t6y',6)">Min %</th><th onclick="sort('t6y',7)">Průměr %</th></tr></thead><tbody><tr><td>1</td><td><strong>Gymnázium Na Pražačce</strong> <span class="b pub">veřejná</span></td><td>Nad Ohradou 2825, Praha, 13000</td><td>831</td><td>30</td><td>30</td><td><span class="idx h">27.70</span></td><td>146.0%</td><td>159.3%</td></tr><tr><td>2</td><td><strong>Gymnázium</strong> <span class="b pub">veřejná</span></td><td>Ústavní 400, Praha, 18100</td><td>430</td><td>60</td><td>60</td><td><span class="idx h">7.17</span></td><td>148.0%</td><td>167.8%</td></tr><tr><td>3</td><td><strong>Rakouské gymnázium v Praze o.p.s.</strong> <span class="b priv">soukromá</span></td><td>Na Cikorce 2166, Praha, 14300</td><td>317</td><td>50</td><td>50</td><td><span class="idx h">6.34</span></td><td>134.0%</td><td>148.7%</td></tr><tr><td>4</td><td><strong>The English College-Angl.gymnázium,o.p.s</strong> <span class="b priv">soukromá</span></td><td>Sokolovská 139, Praha, 19000</td><td>66</td><td>30</td><td>30</td><td><span class="idx m">2.20</span></td><td>104.0%</td><td>128.2%</td></tr></tbody></table></div><div class="cnt">4 záznamů</div>
 
-    <h3>Srovnání 1. ↔ 2. kolo (2025)</h3>
-    <div class="empty">Žádná data</div>
-    <h3>Srovnání 2024 ↔ 2025</h3>
-    <div class="empty">Žádná data</div>
+    <div id="gy6-y2024" class="year-data">
+      <h3>Školní rok 2023/24</h3>
+      <div class="kolo-section">
+        <span class="kolo-label k1">1. kolo 2024</span>
+        <div class="stats">
+          <div class="st"><div class="n">4</div><div class="l">škol</div></div>
+          <div class="st"><div class="n">1 644</div><div class="l">přihlášek</div></div>
+          <div class="st"><div class="n">170</div><div class="l">přijatých</div></div>
+          <div class="st"><div class="n">170</div><div class="l">kapacita</div></div>
+          <div class="st"><div class="n">10.85</div><div class="l">prům. index</div></div>
+        </div>
+        <div class="note">Detailní data pro 2023/24 jsou v archivech Cermatu.</div>
+      </div>
     </div>
+
+    <div id="gy6-y2026" class="year-data">
+      <h3>Školní rok 2025/26</h3>
+      <div class="empty">Data pro 2025/26 ještě nebyla publikována.</div>
+    </div>
+  </div>
 </div>
 
 <!-- ============ 8LETÁ GYMNÁZIA ============ -->
 <div id="gy8" class="tab-content">
-    <div class="sec">
-        <h2>8letá gymnázia</h2>
+  <div class="sec">
+    <h2>8letá gymnázia</h2>
+    <div class="desc">Pražská gymnázia s 8letým studiem</div>
 
-    <div class="desc">1 škola ve 2. kolo · 17 v 1. kole</div>
-    <h3>2. kolo 2025 <span class="b k2">finální</span></h3>
-    <div class="stats">
-        <div class="st"><div class="n">1</div><div class="l">škol</div></div>
-        <div class="st"><div class="n">52</div><div class="l">přihlášek</div></div>
-        <div class="st"><div class="n">4</div><div class="l">přijatých</div></div>
-        <div class="st"><div class="n">4</div><div class="l">kapacita</div></div>
-        <div class="st"><div class="n">13.00</div><div class="l">prům. index</div></div>
-        <div class="st"><div class="n" style="color:#e53935">1</div><div class="l">soukromé</div></div>
-        <div class="st"><div class="n" style="color:#43a047">0</div><div class="l">veřejné</div></div>
+    <div id="gy8-y2025" class="year-data active">
+      <h3>Školní rok 2024/25</h3>
+      <div class="kolo-section">
+        <span class="kolo-label k1">1. kolo 2025</span>
+        <div class="stats">
+          <div class="st"><div class="n">17</div><div class="l">škol</div></div>
+          <div class="st"><div class="n">4 966</div><div class="l">přihlášek</div></div>
+          <div class="st"><div class="n">789</div><div class="l">přijatých</div></div>
+          <div class="st"><div class="n">794</div><div class="l">kapacita</div></div>
+          <div class="st"><div class="n">5.53</div><div class="l">prům. index</div></div>
+        </div>
+        <input class="search" placeholder="Hledat školu..." oninput="filter(this,'t8k1-25')">
+        <div class="tbl"><table id="t8k1-25">
+          <thead><tr><th>#</th><th onclick="sort('t8k1-25',1)">Škola</th><th>Adresa</th><th onclick="sort('t8k1-25',3)">Přihlášky</th><th onclick="sort('t8k1-25',4)">Přijati</th><th onclick="sort('t8k1-25',5)">Kapacita</th><th onclick="sort('t8k1-25',6)">Index</th><th onclick="sort('t8k1-25',7)">Min %</th><th onclick="sort('t8k1-25',8)">Průměr %</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td><strong>Gymnázium, Praha 4, Budějovická 680</strong> <span class="b pub">veřejná</span></td><td>Budějovická 680, Praha, 14000</td><td>606</td><td>60</td><td>60</td><td><span class="idx h">10.10</span></td><td>140.0%</td><td>156.1%</td></tr>
+            <tr><td>2</td><td><strong>Malostranské gymnázium</strong> <span class="b pub">veřejná</span></td><td>Josefská 626, Praha, 11800</td><td>551</td><td>60</td><td>60</td><td><span class="idx h">9.18</span></td><td>152.0%</td><td>166.6%</td></tr>
+            <tr><td>3</td><td><strong>Gymnázium J. Seiferta o.p.s.</strong> <span class="b pub">veřejná</span></td><td>Vysočanské náměstí 500, Praha, 19000</td><td>186</td><td>24</td><td>24</td><td><span class="idx h">7.75</span></td><td>142.0%</td><td>158.2%</td></tr>
+            <tr><td>4</td><td><strong>Gymnázium Jaroslava Heyrovského</strong> <span class="b pub">veřejná</span></td><td>Mezi Školami 2475, Praha, 15800</td><td>690</td><td>90</td><td>90</td><td><span class="idx h">7.67</span></td><td>124.0%</td><td>142.5%</td></tr>
+            <tr><td>5</td><td><strong>Gymnázium J.G.Jarkovského</strong> <span class="b pub">veřejná</span></td><td>Truhlářská 1120, Praha, 11000</td><td>451</td><td>60</td><td>60</td><td><span class="idx h">7.52</span></td><td>120.0%</td><td>135.6%</td></tr>
+            <tr><td>6</td><td><strong>Gymnázium, Praha 5, Nad Kavalírkou 1</strong> <span class="b pub">veřejná</span></td><td>Nad Kavalírkou 100, Praha, 15000</td><td>577</td><td>90</td><td>90</td><td><span class="idx h">6.41</span></td><td>120.0%</td><td>146.3%</td></tr>
+            <tr><td>7</td><td><strong>Gymnázium, Praha 6, Patočkova 4</strong> <span class="b pub">veřejná</span></td><td>Patočkova 4, Praha, 16000</td><td>451</td><td>60</td><td>60</td><td><span class="idx h">5.85</span></td><td>118.0%</td><td>132.4%</td></tr>
+            <tr><td>8</td><td><strong>Gymnázium, Praha 1, Štěpánská 26</strong> <span class="b pub">veřejná</span></td><td>Štěpánská 26, Praha, 11000</td><td>312</td><td>60</td><td>60</td><td><span class="idx h">5.20</span></td><td>116.0%</td><td>128.5%</td></tr>
+            <tr><td>9</td><td><strong>Gymnázium, Praha 9, Českolipská 373</strong> <span class="b pub">veřejná</span></td><td>Českolipská 373, Praha, 19000</td><td>318</td><td>60</td><td>60</td><td><span class="idx m">4.97</span></td><td>114.0%</td><td>125.8%</td></tr>
+            <tr><td>10</td><td><strong>Gymnázium, Praha 7, Nad Štolou 1</strong> <span class="b pub">veřejná</span></td><td>Nad Štolou 1510, Praha, 17000</td><td>294</td><td>59</td><td>60</td><td><span class="idx m">4.90</span></td><td>112.0%</td><td>124.2%</td></tr>
+          </tbody>
+        </table></div>
+        <div class="cnt">17 škol — zobrazeno 10</div>
+      </div>
+      <div class="kolo-section">
+        <span class="kolo-label k2">2. kolo 2025</span>
+        <div class="stats">
+          <div class="st"><div class="n">1</div><div class="l">škol</div></div>
+          <div class="st"><div class="n">52</div><div class="l">přihlášek</div></div>
+          <div class="st"><div class="n">4</div><div class="l">přijatých</div></div>
+          <div class="st"><div class="n">4</div><div class="l">kapacita</div></div>
+          <div class="st"><div class="n">13.00</div><div class="l">prům. index</div></div>
+        </div>
+        <input class="search" placeholder="Hledat školu..." oninput="filter(this,'t8k2-25')">
+        <div class="tbl"><table id="t8k2-25">
+          <thead><tr><th>#</th><th onclick="sort('t8k2-25',1)">Škola</th><th>Adresa</th><th onclick="sort('t8k2-25',3)">Přihlášky</th><th onclick="sort('t8k2-25',4)">Přijati</th><th onclick="sort('t8k2-25',5)">Kapacita</th><th onclick="sort('t8k2-25',6)">Index</th><th onclick="sort('t8k2-25',7)">Min %</th><th onclick="sort('t8k2-25',8)">Průměr %</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td><strong>Gymnázium ALTIS s.r.o.</strong> <span class="b priv">soukromá</span></td><td>Dopplerova 351, Praha, 10900</td><td>52</td><td>4</td><td>4</td><td><span class="idx h">13.00</span></td><td>102.0%</td><td>112.5%</td></tr>
+          </tbody>
+        </table></div>
+        <div class="cnt">1 škola</div>
+      </div>
+      <div class="note">Pouze 1 škola měla 2. kolo — ostatní naplnily kapacitu v 1. kole.</div>
     </div>
-    <input class="search" placeholder="Hledat..." oninput="filter(this,'t8k2')"><div class="tbl"><table id="t8k2"><thead><tr><th>#</th><th onclick="sort('t8k2',0)">Škola</th><th onclick="sort('t8k2',1)">Adresa</th><th onclick="sort('t8k2',2)">Přihlášky</th><th onclick="sort('t8k2',3)">Přijati</th><th onclick="sort('t8k2',4)">Kapacita</th><th onclick="sort('t8k2',5)">Index</th><th onclick="sort('t8k2',6)">Min %</th><th onclick="sort('t8k2',7)">Průměr %</th></tr></thead><tbody><tr><td>1</td><td><strong>Gymnázium ALTIS s.r.o.</strong> <span class="b priv">soukromá</span></td><td>Dopplerova 351, Praha, 10900</td><td>52</td><td>4</td><td>4</td><td><span class="idx h">13.00</span></td><td>102.0%</td><td>112.5%</td></tr></tbody></table></div><div class="cnt">1 záznamů</div>
-    <div class="note">Pouze 1 škola měla 2. kolo — ostatní naplnily kapacitu v 1. kole.</div>
-    <h3>1. kolo 2025 <span class="b k1">předběžné</span></h3>
-    <div class="stats">
-        <div class="st"><div class="n">17</div><div class="l">škol</div></div>
-        <div class="st"><div class="n">4 966</div><div class="l">přihlášek</div></div>
-        <div class="st"><div class="n">789</div><div class="l">přijatých</div></div>
-        <div class="st"><div class="n">794</div><div class="l">kapacita</div></div>
-        <div class="st"><div class="n">5.53</div><div class="l">prům. index</div></div>
-        <div class="st"><div class="n" style="color:#e53935">1</div><div class="l">soukromé</div></div>
-        <div class="st"><div class="n" style="color:#43a047">16</div><div class="l">veřejné</div></div>
-    </div>
-    <input class="search" placeholder="Hledat..." oninput="filter(this,'t8k1')"><div class="tbl"><table id="t8k1"><thead><tr><th>#</th><th onclick="sort('t8k1',0)">Škola</th><th onclick="sort('t8k1',1)">Adresa</th><th onclick="sort('t8k1',2)">Přihlášky</th><th onclick="sort('t8k1',3)">Přijati</th><th onclick="sort('t8k1',4)">Kapacita</th><th onclick="sort('t8k1',5)">Index</th><th onclick="sort('t8k1',6)">Min %</th><th onclick="sort('t8k1',7)">Průměr %</th></tr></thead><tbody><tr><td>1</td><td><strong>Gymnázium, Praha 4, Budějovická 680</strong> <span class="b pub">veřejná</span></td><td>Budějovická 680, Praha, 14000</td><td>606</td><td>60</td><td>60</td><td><span class="idx h">10.10</span></td><td>140.0%</td><td>156.1%</td></tr><tr><td>2</td><td><strong>Malostranské gymnázium</strong> <span class="b pub">veřejná</span></td><td>Josefská 626, Praha, 11800</td><td>551</td><td>60</td><td>60</td><td><span class="idx h">9.18</span></td><td>152.0%</td><td>166.6%</td></tr><tr><td>3</td><td><strong>Gymnázium J. Seiferta o.p.s.</strong> <span class="b pub">veřejná</span></td><td>Vysočanské náměstí 500, Praha, 19000</td><td>186</td><td>24</td><td>24</td><td><span class="idx h">7.75</span></td><td>142.0%</td><td>158.2%</td></tr><tr><td>4</td><td><strong>Gymnázium Jaroslava Heyrovského</strong> <span class="b pub">veřejná</span></td><td>Mezi Školami 2475, Praha, 15800</td><td>690</td><td>90</td><td>90</td><td><span class="idx h">7.67</span></td><td>124.0%</td><td>142.5%</td></tr><tr><td>5</td><td><strong>Gymnázium J.G.Jarkovského</strong> <span class="b pub">veřejná</span></td><td>Truhlářská 1120, Praha, 11000</td><td>451</td><td>60</td><td>60</td><td><span class="idx h">7.52</span></td><td>120.0%</td><td>135.6%</td></tr><tr><td>6</td><td><strong>Gymnázium, Praha 5, Nad Kavalírkou 1</strong> <span class="b pub">veřejná</span></td><td>Nad Kavalírkou 100, Praha, 15000</td><td>577</td><td>90</td><td>90</td><td><span class="idx h">6.41</span></td><td>120.0%</td><td>146.3%</td></tr></tbody></table></div><div class="cnt">6 záznamů (zobrazeno z 17)</div>
-    <h3>1. kolo 2024</h3>
-    <div class="stats">
-        <div class="st"><div class="n">18</div><div class="l">škol</div></div>
-        <div class="st"><div class="n">5 697</div><div class="l">přihlášek</div></div>
-        <div class="st"><div class="n">782</div><div class="l">přijatých</div></div>
-        <div class="st"><div class="n">794</div><div class="l">kapacita</div></div>
-        <div class="st"><div class="n">6.42</div><div class="l">prům. index</div></div>
-        <div class="st"><div class="n" style="color:#e53935">1</div><div class="l">soukromé</div></div>
-        <div class="st"><div class="n" style="color:#43a047">17</div><div class="l">veřejné</div></div>
-    </div>
-    <input class="search" placeholder="Hledat..." oninput="filter(this,'t8y')"><div class="tbl"><table id="t8y"><thead><tr><th>#</th><th onclick="sort('t8y',0)">Škola</th><th onclick="sort('t8y',1)">Adresa</th><th onclick="sort('t8y',2)">Přihlášky</th><th onclick="sort('t8y',3)">Přijati</th><th onclick="sort('t8y',4)">Kapacita</th><th onclick="sort('t8y',5)">Index</th><th onclick="sort('t8y',6)">Min %</th><th onclick="sort('t8y',7)">Průměr %</th></tr></thead><tbody><tr><td>1</td><td><strong>Malostranské gymnázium</strong> <span class="b pub">veřejná</span></td><td>Josefská 626, Praha, 11800</td><td>837</td><td>60</td><td>60</td><td><span class="idx h">13.95</span></td><td>172.0%</td><td>181.1%</td></tr><tr><td>2</td><td><strong>Gymnázium, Praha 4, Budějovická 680</strong> <span class="b pub">veřejná</span></td><td>Budějovická 680, Praha, 14000</td><td>691</td><td>60</td><td>60</td><td><span class="idx h">11.52</span></td><td>162.0%</td><td>173.0%</td></tr><tr><td>3</td><td><strong>Gymnázium, Praha 5, Nad Kavalírkou 1</strong> <span class="b pub">veřejná</span></td><td>Nad Kavalírkou 100, Praha, 15000</td><td>619</td><td>60</td><td>60</td><td><span class="idx h">10.32</span></td><td>158.0%</td><td>167.8%</td></tr><tr><td>4</td><td><strong>Gymnázium J.G.Jarkovského</strong> <span class="b pub">veřejná</span></td><td>Truhlářská 1120, Praha, 11000</td><td>566</td><td>60</td><td>60</td><td><span class="idx h">9.43</span></td><td>150.0%</td><td>159.7%</td></tr><tr><td>5</td><td><strong>Soukromé gymnázium ARCUS s.r.o.</strong> <span class="b priv">veřejná</span></td><td>Bratří Venclíků 1140, Praha, 19800</td><td>204</td><td>26</td><td>26</td><td><span class="idx h">7.85</span></td><td>146.0%</td><td>165.2%</td></tr><tr><td>6</td><td><strong>Gymnázium J. Seiferta o.p.s.</strong> <span class="b pub">veřejná</span></td><td>Vysočanské náměstí 500, Praha, 19000</td><td>183</td><td>24</td><td>24</td><td><span class="idx h">7.63</span></td><td>152.0%</td><td>169.8%</td></tr></tbody></table></div><div class="cnt">6 záznamů (zobrazeno z 18)</div>
 
-    <h3>Srovnání 1. ↔ 2. kolo (2025)</h3>
-    <div class="empty">Žádná data</div>
-    <h3>Srovnání 2024 ↔ 2025</h3>
-    <div class="empty">Žádná data</div>
+    <div id="gy8-y2024" class="year-data">
+      <h3>Školní rok 2023/24</h3>
+      <div class="kolo-section">
+        <span class="kolo-label k1">1. kolo 2024</span>
+        <div class="stats">
+          <div class="st"><div class="n">18</div><div class="l">škol</div></div>
+          <div class="st"><div class="n">5 697</div><div class="l">přihlášek</div></div>
+          <div class="st"><div class="n">782</div><div class="l">přijatých</div></div>
+          <div class="st"><div class="n">794</div><div class="l">kapacita</div></div>
+          <div class="st"><div class="n">6.42</div><div class="l">prům. index</div></div>
+        </div>
+        <div class="note">Detailní data pro 2023/24 jsou v archivech Cermatu.</div>
+      </div>
     </div>
+
+    <div id="gy8-y2026" class="year-data">
+      <h3>Školní rok 2025/26</h3>
+      <div class="empty">Data pro 2025/26 ještě nebyla publikována.</div>
+    </div>
+  </div>
 </div>
-
 <!-- ============ UČŇOVSKÉ OBORY ============ -->
 <div id="sou" class="tab-content">
-    <div class="sec">
-        <h2>Učňovské obory — Střední odborné učiliště (SOU)</h2>
-        <div class="desc">SOU v Praze — vstupní požadavky, kapacita a obory v roce 2024/2025</div>
-        <div class="note3">
-            <strong>Poznámka:</strong> Data pocházejí z Cermat (č. jm. přijímacího řízení, studijní obory, kapacity). 
-            Praktické vyučovací obory a výuka doplňkových předmětů se mohou lišit.
-            Pro detailní informace navštivte webové stránky jednotlivých škol.
-        </div>
+  <div class="sec">
+    <h2>Učňovské obory — SOU</h2>
+    <div class="desc">Střední odborná učiliště v Praze — obory, kapacita a vstupní požadavky</div>
+    <div class="note3">
+      <strong>Poznámka:</strong> Data pocházejí z Cermat. Praktické vyučovací obory a výuka doplňkových předmětů se mohou lišit.
+      Pro detailní informace navštivte webové stránky jednotlivých škol.
+    </div>
+    <div class="stats">
+      <div class="st"><div class="n">~25</div><div class="l">SOU v Praze</div></div>
+      <div class="st"><div class="n">8</div><div class="l">hlavních oborů</div></div>
+      <div class="st"><div class="n">75+</div><div class="l">specializací</div></div>
+      <div class="st"><div class="n">≈5 000</div><div class="l">přijatých/rok</div></div>
+    </div>
 
-        <h3>🔩 Obory vzdělávání — Přehled škol a oborů</h3>
-        <div class="stats">
-            <div class="st"><div class="n">~25</div><div class="l">SOU v Praze</div></div>
-            <div class="st"><div class="n">8</div><div class="l">hlavních oborů</div></div>
-            <div class="st"><div class="n">75+</div><div class="l">specializací</div></div>
-            <div class="st"><div class="n">≈5 000</div><div class="l">přijatých žáků/rok</div></div>
-        </div>
-
-        <!-- Obor: Strojírenství -->
-        <h3>🔧 Strojírenství a mechanika</h3>
-        <div class="exp-card" style="margin-top:12px;">
-            <p><strong>Vstupní požadavky:</strong> Základní vzdělání (ZŠ), vhodné pro zájemce o technické práce, manuální zručnost, matematické myšlení.</p>
-            <p><strong>Délka studia:</strong> 2–4 roky (dle oboru).</p>
-            <p><strong>Zaměření:</strong> CNC stroje, konstrukce, řízení výroby, kvalita, automatizace.</p>
-        </div>
-        <input class="search" placeholder="Hledat školu s oborem strojírenství..." oninput="filter(this,'tsou1')"><div class="tbl"><table id="tsou1"><thead><tr><th>#</th><th onclick="sort('tsou1',0)">Škola</th><th onclick="sort('tsou1',1)">Adresa</th><th onclick="sort('tsou1',2)">Obor</th><th onclick="sort('tsou1',3)">Kapacita</th><th onclick="sort('tsou1',4)">Náplň</th><th onclick="sort('tsou1',5)">Vstup</th></tr></thead><tbody>
+    <h3>🔧 Strojírenství a mechanika</h3>
+    <div class="exp-card" style="margin-top:8px;">
+      <p><strong>Vstupní požadavky:</strong> Základní vzdělání, vhodné pro zájemce o technické práce, manuální zručnost.</p>
+      <p><strong>Délka studia:</strong> 2–4 roky. <strong>Zaměření:</strong> CNC stroje, konstrukce, řízení výroby, automatizace.</p>
+    </div>
+    <input class="search" placeholder="Hledat školu s oborem strojírenství..." oninput="filter(this,'tsou1')">
+    <div class="tbl"><table id="tsou1">
+      <thead><tr><th>#</th><th>Škola</th><th>Adresa</th><th>Obor</th><th>Kapacita</th><th>Náplň</th><th>Vstup</th></tr></thead>
+      <tbody>
         <tr><td>1</td><td><strong>SOU Praha, Líšeňská</strong> <span class="b pub">veřejná</span></td><td>Líšeňská 504/32, Praha, 109 00</td><td><span class="b sov">Strojír. výroby</span></td><td>28</td><td>Řezné, brusné, frézovací práce, CNC</td><td>ZŠ, příjmkové zkoušky</td></tr>
         <tr><td>2</td><td><strong>SPŠ strojnická, Praha 4</strong> <span class="b pub">veřejná</span></td><td>Praha 4, 140 00</td><td><span class="b sov">Strojír. výroby</span></td><td>32</td><td>Konstrukce, CAD/CAM, výroba</td><td>ZŠ, zkoušky</td></tr>
         <tr><td>3</td><td><strong>SOU Praha 11, K Čihadlu</strong> <span class="b pub">veřejná</span></td><td>K Čihadlu 2454/52, Praha, 110 00</td><td><span class="b sov">Strojír. výroby</span></td><td>24</td><td>Obrábění, měřicí technika</td><td>ZŠ</td></tr>
-        </tbody></table></div><div class="cnt">3 záznamů</div>
+      </tbody>
+    </table></div>
+    <div class="cnt">3 záznamy</div>
 
-        <!-- Obor: Elektrotechnika -->
-        <h3>⚡ Elektrotechnika a elektronika</h3>
-        <div class="exp-card" style="margin-top:12px;">
-            <p><strong>Vstupní požadavky:</strong> Základní vzdělání, zájem o fyziku a matematiku, práce s elektrickými obvody.</p>
-            <p><strong>Délka studia:</strong> 3–4 roky.</p>
-            <p><strong>Zaměření:</strong> Elektrické stroje, automatizace, PLC, elektrotechnické konstrukce, energetika.</p>
-        </div>
-        <input class="search" placeholder="Hledat školu s oborem elektrotechnika..." oninput="filter(this,'tsou2')"><div class="tbl"><table id="tsou2"><thead><tr><th>#</th><th onclick="sort('tsou2',0)">Škola</th><th onclick="sort('tsou2',1)">Adresa</th><th onclick="sort('tsou2',2)">Obor</th><th onclick="sort('tsou2',3)">Kapacita</th><th onclick="sort('tsou2',4)">Náplň</th><th onclick="sort('tsou2',5)">Vstup</th></tr></thead><tbody>
+    <h3>⚡ Elektrotechnika a elektronika</h3>
+    <div class="exp-card" style="margin-top:8px;">
+      <p><strong>Vstupní požadavky:</strong> Základní vzdělání, zájem o fyziku a matematiku.</p>
+      <p><strong>Délka studia:</strong> 3–4 roky. <strong>Zaměření:</strong> Elektrické stroje, automatizace, PLC, energetika.</p>
+    </div>
+    <input class="search" placeholder="Hledat školu s oborem elektrotechnika..." oninput="filter(this,'tsou2')">
+    <div class="tbl"><table id="tsou2">
+      <thead><tr><th>#</th><th>Škola</th><th>Adresa</th><th>Obor</th><th>Kapacita</th><th>Náplň</th><th>Vstup</th></tr></thead>
+      <tbody>
         <tr><td>1</td><td><strong>SOU Praha 9, Hlavčova</strong> <span class="b pub">veřejná</span></td><td>Hlavčova 537/14, Praha, 90 00</td><td><span class="b soi">Elektrotechnika</span></td><td>28</td><td>Elektroinstalační, automatizace, PLC</td><td>ZŠ, příjmkové</td></tr>
         <tr><td>2</td><td><strong>SPŠ elektrotechnická, Praha 4</strong> <span class="b pub">veřejná</span></td><td>V Úžlabině 320, Praha, 100 00</td><td><span class="b soi">Elektrotechnika</span></td><td>32</td><td>Elektrické stroje, energetika</td><td>ZŠ, zkoušky</td></tr>
         <tr><td>3</td><td><strong>SOU Praha 1, Třebonice</strong> <span class="b pub">veřejná</span></td><td>Třebonice 1294/38, Praha, 160 00</td><td><span class="b soi">Elektrotechnika</span></td><td>24</td><td>Elektronika, počítačové sítě</td><td>ZŠ</td></tr>
-        </tbody></table></div><div class="cnt">3 záznamů</div>
+      </tbody>
+    </table></div>
+    <div class="cnt">3 záznamy</div>
 
-        <!-- Obor: Informační technologie -->
-        <h3>💻 Informační technologie a programování</h3>
-        <div class="exp-card" style="margin-top:12px;">
-            <p><strong>Vstupní požadavky:</strong> Základní vzdělání, logické myšlení, zájem o programování a IT.</p>
-            <p><strong>Délka studia:</strong> 4 roky.</p>
-            <p><strong>Zaměření:</strong> Programování (Python, Java, web), databáze, sítě, kybernetická bezpečnost.</p>
-        </div>
-        <input class="search" placeholder="Hledat školu s oborem IT..." oninput="filter(this,'tsou3')"><div class="tbl"><table id="tsou3"><thead><tr><th>#</th><th onclick="sort('tsou3',0)">Škola</th><th onclick="sort('tsou3',1)">Adresa</th><th onclick="sort('tsou3',2)">Obor</th><th onclick="sort('tsou3',3)">Kapacita</th><th onclick="sort('tsou3',4)">Náplň</th><th onclick="sort('tsou3',5)">Vstup</th></tr></thead><tbody>
+    <h3>💻 Informační technologie a programování</h3>
+    <div class="exp-card" style="margin-top:8px;">
+      <p><strong>Vstupní požadavky:</strong> Základní vzdělání, logické myšlení, zájem o programování.</p>
+      <p><strong>Délka studia:</strong> 4 roky. <strong>Zaměření:</strong> Programování (Python, Java, web), databáze, sítě.</p>
+    </div>
+    <input class="search" placeholder="Hledat školu s oborem IT..." oninput="filter(this,'tsou3')">
+    <div class="tbl"><table id="tsou3">
+      <thead><tr><th>#</th><th>Škola</th><th>Adresa</th><th>Obor</th><th>Kapacita</th><th>Náplň</th><th>Vstup</th></tr></thead>
+      <tbody>
         <tr><td>1</td><td><strong>Gymnázium SOŠ IT Praha, s.r.o.</strong> <span class="b priv">soukromá</span></td><td>Vladimírova 771/12, Praha 4, 140 00</td><td><span class="b soi">IT specialista</span></td><td>24</td><td>Programování, webdesign, sítě</td><td>ZŠ, přijímka</td></tr>
         <tr><td>2</td><td><strong>SOU Praha 5, Mrazovická</strong> <span class="b pub">veřejná</span></td><td>Mrazovická 623, Praha, 130 00</td><td><span class="b soi">IT technik</span></td><td>24</td><td>HW, SW, počítačové sítě</td><td>ZŠ</td></tr>
         <tr><td>3</td><td><strong>SPŠ a SOŠ Podnikatelská, Praha 4</strong> <span class="b pub">veřejná</span></td><td>Budějovická 1542/7a, Praha, 4000</td><td><span class="b soi">IT technik</span></td><td>15</td><td>Databáze, programování, sítě</td><td>ZŠ</td></tr>
-        </tbody></table></div><div class="cnt">3 záznamů</div>
+      </tbody>
+    </table></div>
+    <div class="cnt">3 záznamy</div>
 
-        <!-- Obor: Ekonomika a řízení -->
-        <h3>📊 Ekonomika, právo a řízení podniku</h3>
-        <div class="exp-card" style="margin-top:12px;">
-            <p><strong>Vstupní požadavky:</strong> Základní vzdělání, zájem o ekonomiku, matematika, právo, řízení.</p>
-            <p><strong>Délka studia:</strong> 3–4 roky.</p>
-            <p><strong>Zaměření:</strong> Ekonomika, účetnictví, podnikání, právo, marketing, logistika.</p>
-        </div>
-        <input class="search" placeholder="Hledat školu s oborem ekonomie..." oninput="filter(this,'tsou4')"><div class="tbl"><table id="tsou4"><thead><tr><th>#</th><th onclick="sort('tsou4',0)">Škola</th><th onclick="sort('tsou4',1)">Adresa</th><th onclick="sort('tsou4',2)">Obor</th><th onclick="sort('tsou4',3)">Kapacita</th><th onclick="sort('tsou4',4)">Náplň</th><th onclick="sort('tsou4',5)">Vstup</th></tr></thead><tbody>
+    <h3>📊 Ekonomika, právo a řízení podniku</h3>
+    <div class="exp-card" style="margin-top:8px;">
+      <p><strong>Vstupní požadavky:</strong> Základní vzdělání, zájem o ekonomiku, matematika, právo.</p>
+      <p><strong>Délka studia:</strong> 3–4 roky. <strong>Zaměření:</strong> Ekonomika, účetnictví, podnikání, marketing, logistika.</p>
+    </div>
+    <input class="search" placeholder="Hledat školu s oborem ekonomie..." oninput="filter(this,'tsou4')">
+    <div class="tbl"><table id="tsou4">
+      <thead><tr><th>#</th><th>Škola</th><th>Adresa</th><th>Obor</th><th>Kapacita</th><th>Náplň</th><th>Vstup</th></tr></thead>
+      <tbody>
         <tr><td>1</td><td><strong>SPŠ a SOŠ Podnikatelská, Praha 4</strong> <span class="b pub">veřejná</span></td><td>Budějovická 1542/7a, Praha, 4000</td><td><span class="b soe">Ekonom</span></td><td>32</td><td>Účetnictví, právo, marketing</td><td>ZŠ, zkoušky</td></tr>
         <tr><td>2</td><td><strong>SOŠ Dr. Albína Bráfa</strong> <span class="b pub">veřejná</span></td><td>Lihovarská 2927/2, Praha, 109 00</td><td><span class="b soe">Ekonom</span></td><td>28</td><td>Obchodní činnost, podnikání</td><td>ZŠ</td></tr>
         <tr><td>3</td><td><strong>SOU Praha 9, Hlavčova</strong> <span class="b pub">veřejná</span></td><td>Hlavčova 537/14, Praha, 90 00</td><td><span class="b soe">Obchodní řízení</span></td><td>24</td><td>Obchodní komunikace, právo, ekonomika</td><td>ZŠ</td></tr>
-        </tbody></table></div><div class="cnt">3 záznamů</div>
+      </tbody>
+    </table></div>
+    <div class="cnt">3 záznamy</div>
 
-        <!-- Obor: Gastronomie -->
-        <h3>🍳 Gastronomie a hotelnictví</h3>
-        <div class="exp-card" style="margin-top:12px;">
-            <p><strong>Vstupní požadavky:</strong> Základní vzdělání, chuť k fyzické práci, kreativita, hygienický řád.</p>
-            <p><strong>Délka studia:</strong> 3 roky.</p>
-            <p><strong>Zaměření:</strong> Vaření, pečení, cukrářství, hotelnictví, catering, sommelérský výcvik.</p>
-        </div>
-        <input class="search" placeholder="Hledat školu s oborem gastronomie..." oninput="filter(this,'tsou5')"><div class="tbl"><table id="tsou5"><thead><tr><th>#</th><th onclick="sort('tsou5',0)">Škola</th><th onclick="sort('tsou5',1)">Adresa</th><th onclick="sort('tsou5',2)">Obor</th><th onclick="sort('tsou5',3)">Kapacita</th><th onclick="sort('tsou5',4)">Náplň</th><th onclick="sort('tsou5',5)">Vstup</th></tr></thead><tbody>
+    <h3>🍳 Gastronomie a hotelnictví</h3>
+    <div class="exp-card" style="margin-top:8px;">
+      <p><strong>Vstupní požadavky:</strong> Základní vzdělání, chuť k fyzické práci, kreativita.</p>
+      <p><strong>Délka studia:</strong> 3 roky. <strong>Zaměření:</strong> Vaření, pečení, cukrářství, hotelnictví, catering.</p>
+    </div>
+    <input class="search" placeholder="Hledat školu s oborem gastronomie..." oninput="filter(this,'tsou5')">
+    <div class="tbl"><table id="tsou5">
+      <thead><tr><th>#</th><th>Škola</th><th>Adresa</th><th>Obor</th><th>Kapacita</th><th>Náplň</th><th>Vstup</th></tr></thead>
+      <tbody>
         <tr><td>1</td><td><strong>Pražská hotelová škola</strong> <span class="b pub">veřejná</span></td><td>Duhová 1444/2, Praha, 4 1000</td><td><span class="b sog">Gastronomie</span></td><td>20</td><td>Vaření, pečení, hotelnictví, sommelier</td><td>ZŠ, ukázkové dny</td></tr>
         <tr><td>2</td><td><strong>SOŠ a SOU Středoprůmysl hotelnický</strong> <span class="b pub">veřejná</span></td><td>Praha, 130 00</td><td><span class="b sog">Gastronomie</span></td><td>24</td><td>Kuchař, číšník, catering</td><td>ZŠ</td></tr>
         <tr><td>3</td><td><strong>SOU Praha 5, Mrazovická</strong> <span class="b pub">veřejná</span></td><td>Mrazovická 623, Praha, 130 00</td><td><span class="b sog">Konditorek/cukrář</span></td><td>16</td><td>Cukrářství, pečení, design dortů</td><td>ZŠ</td></tr>
-        </tbody></table></div><div class="cnt">3 záznamů</div>
+      </tbody>
+    </table></div>
+    <div class="cnt">3 záznamy</div>
 
-        <!-- Obor: Kadeřnictví a kosmetika -->
-        <h3>💇 Kadeřnictví, kosmetika a péče o tělo</h3>
-        <div class="exp-card" style="margin-top:12px;">
-            <p><strong>Vstupní požadavky:</strong> Základní vzdělání, kreativita, komunikativnost, estetické cítění.</p>
-            <p><strong>Délka studia:</strong> 2–3 roky.</p>
-            <p><strong>Zaměření:</strong> Kadeřnické služby, kosmetické ošetření, manikúra, pedikúra, masáže.</p>
-        </div>
-        <input class="search" placeholder="Hledat školu s oborem kadeřnictví..." oninput="filter(this,'tsou6')"><div class="tbl"><table id="tsou6"><thead><tr><th>#</th><th onclick="sort('tsou6',0)">Škola</th><th onclick="sort('tsou6',1)">Adresa</th><th onclick="sort('tsou6',2)">Obor</th><th onclick="sort('tsou6',3)">Kapacita</th><th onclick="sort('tsou6',4)">Náplň</th><th onclick="sort('tsou6',5)">Vstup</th></tr></thead><tbody>
+    <h3>💇 Kadeřnictví, kosmetika a péče o tělo</h3>
+    <div class="exp-card" style="margin-top:8px;">
+      <p><strong>Vstupní požadavky:</strong> Základní vzdělání, kreativita, komunikativnost, estetické cítění.</p>
+      <p><strong>Délka studia:</strong> 2–3 roky. <strong>Zaměření:</strong> Kadeřnické služby, kosmetické ošetření, manikúra.</p>
+    </div>
+    <input class="search" placeholder="Hledat školu s oborem kadeřnictví..." oninput="filter(this,'tsou6')">
+    <div class="tbl"><table id="tsou6">
+      <thead><tr><th>#</th><th>Škola</th><th>Adresa</th><th>Obor</th><th>Kapacita</th><th>Náplň</th><th>Vstup</th></tr></thead>
+      <tbody>
         <tr><td>1</td><td><strong>SOŠ soudržnost, Praha 1</strong> <span class="b pub">veřejná</span></td><td>Paříkova 26, Praha, 186 00</td><td><span class="b som">Kadeřnictví</span></td><td>24</td><td>Stříhání, barvení, zvlnění, péče</td><td>ZŠ, praktická zkouška</td></tr>
         <tr><td>2</td><td><strong>SOU Praha 2, Bělohorská</strong> <span class="b pub">veřejná</span></td><td>Bělohorská 1429/120, Praha, 6 100</td><td><span class="b som">Kosmetika</span></td><td>20</td><td>Kosmetické ošetření, líčení, manikúra</td><td>ZŠ</td></tr>
-        </tbody></table></div><div class="cnt">2 záznamů</div>
+      </tbody>
+    </table></div>
+    <div class="cnt">2 záznamy</div>
 
-        <!-- Obor: Zdravotní péče -->
-        <h3>🏥 Zdravotní péče a sociální práce</h3>
-        <div class="exp-card" style="margin-top:12px;">
-            <p><strong>Vstupní požadavky:</strong> Základní vzdělání, empatie, komunikativní dovednosti, fyzická zdatnost.</p>
-            <p><strong>Délka studia:</strong> 2–4 roky.</p>
-            <p><strong>Zaměření:</strong> Zdravotní péče, záchranářství, geriatrie, sociální práce, dentální hygiena.</p>
-        </div>
-        <input class="search" placeholder="Hledat školu s oborem zdravotní péče..." oninput="filter(this,'tsou7')"><div class="tbl"><table id="tsou7"><thead><tr><th>#</th><th onclick="sort('tsou7',0)">Škola</th><th onclick="sort('tsou7',1)">Adresa</th><th onclick="sort('tsou7',2)">Obor</th><th onclick="sort('tsou7',3)">Kapacita</th><th onclick="sort('tsou7',4)">Náplň</th><th onclick="sort('tsou7',5)">Vstup</th></tr></thead><tbody>
+    <h3>🏥 Zdravotní péče a sociální práce</h3>
+    <div class="exp-card" style="margin-top:8px;">
+      <p><strong>Vstupní požadavky:</strong> Základní vzdělání, empatie, komunikační dovednosti.</p>
+      <p><strong>Délka studia:</strong> 2–4 roky. <strong>Zaměření:</strong> Zdravotní péče, záchranářství, sociální práce.</p>
+    </div>
+    <input class="search" placeholder="Hledat školu s oborem zdravotní péče..." oninput="filter(this,'tsou7')">
+    <div class="tbl"><table id="tsou7">
+      <thead><tr><th>#</th><th>Škola</th><th>Adresa</th><th>Obor</th><th>Kapacita</th><th>Náplň</th><th>Vstup</th></tr></thead>
+      <tbody>
         <tr><td>1</td><td><strong>SOŠ zdravotnická, Praha 2</strong> <span class="b pub">veřejná</span></td><td>Třeboradní 499/1, Praha, 2 600</td><td><span class="b som">Zdravotní péče</span></td><td>40</td><td>Základní zdravotní péče, praktické úkoly</td><td>ZŠ, dotazník</td></tr>
         <tr><td>2</td><td><strong>SOU Praha 4, Milady Horákové</strong> <span class="b pub">veřejná</span></td><td>Milady Horákové 1121/73, Praha, 4000</td><td><span class="b som">Zdravotní bratřička</span></td><td>24</td><td>Základní zdravotní péče, první pomoc</td><td>ZŠ</td></tr>
         <tr><td>3</td><td><strong>SOŠ sociální, Praha 3</strong> <span class="b pub">veřejná</span></td><td>Molakova 743/31, Praha, 3 800</td><td><span class="b som">Sociální práce</span></td><td>28</td><td>Sociální péče, poradenská činnost</td><td>ZŠ</td></tr>
-        </tbody></table></div><div class="cnt">3 záznamů</div>
+      </tbody>
+    </table></div>
+    <div class="cnt">3 záznamy</div>
 
-        <!-- Obor: Pedagogika a výchova -->
-        <h3>🎓 Pedagogika a výchova</h3>
-        <div class="exp-card" style="margin-top:12px;">
-            <p><strong>Vstupní požadavky:</strong> Základní vzdělání, komunikační dovednosti, trpělivost, kreativita.</p>
-            <p><strong>Délka studia:</strong> 3–4 roky.</p>
-            <p><strong>Zaměření:</strong> Výchovná práce, volnočasová výchova, asistenční pedagogika, předškolní výchova.</p>
-        </div>
-        <input class="search" placeholder="Hledat školu s oborem pedagogika..." oninput="filter(this,'tsou8')"><div class="tbl"><table id="tsou8"><thead><tr><th>#</th><th onclick="sort('tsou8',0)">Škola</th><th onclick="sort('tsou8',1)">Adresa</th><th onclick="sort('tsou8',2)">Obor</th><th onclick="sort('tsou8',3)">Kapacita</th><th onclick="sort('tsou8',4)">Náplň</th><th onclick="sort('tsou8',5)">Vstup</th></tr></thead><tbody>
-        <tr><td>1</td><td><strong>Pražská VOŠ sociální</strong> <span class="b pub">veřejná</span></td><td>Molakova 743/31, Praha, 3 800</td><td><span class="b soi">Asistent pedagoga</span></td><td>24</td><td>Výchovná práce, předškolní výchova</td><td>ZŠ, rozhovor</td></tr>
-        <tr><td>2</td><td><strong>SOU Praha, Klíčová</strong> <span class="b pub">veřejná</span></td><td>Klíčová 962/1, Praha, 5 300</td><td><span class="b soi">Volnočasová výchova</span></td><td>20</td><td>Zájemcová výchova, kluby, tábory</td><td>ZŠ</td></tr>
-        </tbody></table></div><div class="cnt">2 záznamů</div>
-
-        <!-- Obor: Průmyslný design a výtvarná výchova -->
-        <h3>🎨 Průmyslný design a umění</h3>
-        <div class="exp-card" style="margin-top:12px;">
-            <p><strong>Vstupní požadavky:</strong> Základní vzdělání, tvůrčí nadanost, kreslící dovednosti.</p>
-            <p><strong>Délka studia:</strong> 4 roky.</p>
-            <p><strong>Zaměření:</strong> Výtvarná výchova, design, keramika, umělecké zpracování, restaurátorské práce.</p>
-        </div>
-        <input class="search" placeholder="Hledat školu s oborem design..." oninput="filter(this,'tsou9')"><div class="tbl"><table id="tsou9"><thead><tr><th>#</th><th onclick="sort('tsou9',0)">Škola</th><th onclick="sort('tsou9',1)">Adresa</th><th onclick="sort('tsou9',2)">Obor</th><th onclick="sort('tsou9',3)">Kapacita</th><th onclick="sort('tsou9',4)">Náplň</th><th onclick="sort('tsou9',5)">Vstup</th></tr></thead><tbody>
-        <tr><td>1</td><td><strong>SOU Praha, Salmovská</strong> <span class="b pub">veřejná</span></td><td>Salmovská 1076/6, Praha, 1 800</td><td><span class="b soi">Průmyslný design</span></td><td>16</td><td>Keramika, kresba, grafika, modelářství</td><td>ZŠ, talent</td></tr>
-        <tr><td>2</td><td><strong>SOŠ umělecká, Praha 1</strong> <span class="b pub">veřejná</span></td><td>Lidická 22/10, Praha, 150 00</td><td><span class="b soi">Umělecké zpracování</span></td><td>20</td><td>Malba, sochařství, grafika</td><td>ZŠ, talent</td></tr>
-        </tbody></table></div><div class="cnt">2 záznamů</div>
-
-        <!-- Obor: Zemědělství a potravinářství -->
-        <h3>🌾 Zemědělství a potravinářství</h3>
-        <div class="exp-card" style="margin-top:12px;">
-            <p><strong>Vstupní požadavky:</strong> Základní vzdělání, zájem o přírodu a potravinářství.</p>
-            <p><strong>Délka studia:</strong> 3–4 roky.</p>
-            <p><strong>Zaměření:</strong> Rostlinná a živočišná výroba, potravinářství, ekologie, lesnictví.</p>
-        </div>
-        <input class="search" placeholder="Hledat školu s oborem zemědělství..." oninput="filter(this,'tsou10')"><div class="tbl"><table id="tsou10"><thead><tr><th>#</th><th onclick="sort('tsou10',0)">Škola</th><th onclick="sort('tsou10',1)">Adresa</th><th onclick="sort('tsou10',2)">Obor</th><th onclick="sort('tsou10',3)">Kapacita</th><th onclick="sort('tsou10',4)">Náplň</th><th onclick="sort('tsou10',5)">Vstup</th></tr></thead><tbody>
-        <tr><td>1</td><td><strong>SOU zemědělské, Praha</strong> <span class="b pub">veřejná</span></td><td>Suchdolská 910/6, Praha, 6 100</td><td><span class="b soi">Zahradnictví</span></td><td>20</td><td>Zahradnictví, krajinná úprava</td><td>ZŠ</td></tr>
-        </tbody></table></div><div class="cnt">1 záznam</div>
-
-        <div class="note">
-            <strong>Jak se přihlásit na SOU?</strong> Většina SOU v Praze přijímá bez vstupních zkoušek — stačí ukončené ZŠ. Některé obory (umělecké, sportovní, gastronomie) mohou vyžadovat ukázkové činnosti nebo talentové zkoušky. 
-            Přihlášky se podávají elektronicky přes <a href="https://cermat.cz">Cermat</a> v termínu leden–březen.
-        </div>
+    <div class="note" style="margin-top:24px;">
+      <strong>Jak se přihlásit na SOU?</strong> Většina SOU v Praze přijímá bez vstupních zkoušek — stačí ukončené ZŠ.
+      Některé obory (umělecké, sportovní, gastronomie) mohou vyžadovat ukázkové činnosti nebo talentové zkoušky.
+      Přihlášky se podávají elektronicky přes <a href="https://cermat.cz">Cermat</a> v termínu leden–březen.
     </div>
+  </div>
 </div>
-
-<!-- ============ ŽEBRÍŘKY ============ -->
+<!-- ============ ŽEBRÍČKY ============ -->
 <div id="top" class="tab-content">
-    <div class="sec">
-        <h2>Žebříčky</h2>
-        <div class="desc">Srovnání napříč všemi typy škol</div>
+  <div class="sec">
+    <h2>Žebříčky</h2>
+    <div class="desc">Srovnání napříč všemi typy škol</div>
 
-        <h3>Nejkonkurenčnější gymnázia 2025 (index poptávky)</h3>
-        <div class="chart">
-            <div class="bar"><div class="bar-lbl" title="Rakouské gymnázium v Praze o.p.s.">Rakouské gymnázium v Praze o.p.s.</div><div class="bar-track"><div class="bar-fill" style="width:100%;background:#e53935"></div><div class="bar-val">51.00</div></div></div>
-            <div class="bar"><div class="bar-lbl" title="Gymnázium Na Pražačce">Gymnázium Na Pražačce</div><div class="bar-track"><div class="bar-fill" style="width:57.333333333333336%;background:#e53935"></div><div class="bar-val">14.33</div></div></div>
-            <div class="bar"><div class="bar-lbl" title="Gymnázium ALTIS s.r.o.">Gymnázium ALTIS s.r.o.</div><div class="bar-track"><div class="bar-fill" style="width:52%;background:#e53935"></div><div class="bar-val">13.00</div></div></div>
-            <div class="bar"><div class="bar-lbl" title="VOŠek.st.,G,SPŠpotr.t. a SOŠpřír.a vet.">VOŠek.st.,G,SPŠpotr.t. a SOŠpřír.a vet.</div><div class="bar-track"><div class="bar-fill" style="width:37.333333333333336%;background:#e53935"></div><div class="bar-val">9.33</div></div></div>
-            <div class="bar"><div class="bar-lbl" title="Gymnázium">Gymnázium</div><div class="bar-track"><div class="bar-fill" style="width:24%;background:#e53935"></div><div class="bar-val">6.00</div></div></div>
-            <div class="bar"><div class="bar-lbl" title="SPŠ elektrotechnická a gymnázium">SPŠ elektrotechnická a gymnázium</div><div class="bar-track"><div class="bar-fill" style="width:18.6%;background:#f59e0b"></div><div class="bar-val">4.65</div></div></div>
-            <div class="bar"><div class="bar-lbl" title="SPŠ a Gymnázium Na Třebešíně">SPŠ a Gymnázium Na Třebešíně</div><div class="bar-track"><div class="bar-fill" style="width:13.333333333333334%;background:#f59e0b"></div><div class="bar-val">3.33</div></div></div>
-            <div class="bar"><div class="bar-lbl" title="SOŠ automobilní, informatiky a gymnázium">SOŠ automobilní...</div><div class="bar-track"><div class="bar-fill" style="width:10%;background:#f59e0b"></div><div class="bar-val">2.92</div></div></div>
-        </div>
-        <h3>Nejvyšší min. skóre přijatých 2025</h3>
-        <div class="chart">
-            <div class="bar"><div class="bar-lbl" title="Gymnázium">Gymnázium</div><div class="bar-track"><div class="bar-fill" style="width:75%;background:#111"></div><div class="bar-val">150.0%</div></div></div>
-            <div class="bar"><div class="bar-lbl" title="Gymnázium">Gymnázium</div><div class="bar-track"><div class="bar-fill" style="width:67%;background:#111"></div><div class="bar-val">134.0%</div></div></div>
-            <div class="bar"><div class="bar-lbl" title="SPŠ zeměměřická a Geogr. gymnázium Praha">SPŠ zeměměřická a Geogr. gymnázium Praha</div><div class="bar-track"><div class="bar-fill" style="width:67%;background:#111"></div><div class="bar-val">134.0%</div></div></div>
-            <div class="bar"><div class="bar-lbl" title="Gymn., SOŠ, ZŠ a MŠ pro sluch. postižené">Gymn., SOŠ, ZŠ a MŠ pro sluch. postižené</div><div class="bar-track"><div class="bar-fill" style="width:66%;background:#111"></div><div class="bar-val">132.0%</div></div></div>
-            <div class="bar"><div class="bar-lbl" title="Rakouské gymnázium v Praze o.p.s.">Rakouské gymnázium v Praze o.p.s.</div><div class="bar-track"><div class="bar-fill" style="width:65%;background:#111"></div><div class="bar-val">130.0%</div></div></div>
-            <div class="bar"><div class="bar-lbl" title="VOŠek.st.,G,SPŠpotr.t. a SOŠpřír.a vet.">VOŠek.st.,G,SPŠpotr.t. a SOŠpřír.a vet.</div><div class="bar-track"><div class="bar-fill" style="width:63%;background:#111"></div><div class="bar-val">126.0%</div></div></div>
-            <div class="bar"><div class="bar-lbl" title="Gymnázium">Gymnázium</div><div class="bar-track"><div class="bar-fill" style="width:61%;background:#111"></div><div class="bar-val">122.0%</div></div></div>
-            <div class="bar"><div class="bar-lbl" title="Škola MVV, SOŠ, Gymnázium, s.r.o.">Škola MVV, SOŠ, Gymnázium, s.r.o.</div><div class="bar-track"><div class="bar-fill" style="width:59%;background:#111"></div><div class="bar-val">118.0%</div></div></div>
-        </div>
+    <h3>Nejkonkurenčnější gymnázia 2025 (index poptávky)</h3>
+    <div class="chart">
+      <div class="bar"><div class="bar-lbl" title="Rakouské gymnázium v Praze o.p.s.">Rakouské gymnázium</div><div class="bar-track"><div class="bar-fill" style="width:100%;background:#e53935"></div><div class="bar-val">51.00</div></div></div>
+      <div class="bar"><div class="bar-lbl" title="Gymnázium Na Pražačce">Gymnázium Na Pražačce</div><div class="bar-track"><div class="bar-fill" style="width:28%;background:#e53935"></div><div class="bar-val">14.33</div></div></div>
+      <div class="bar"><div class="bar-lbl" title="Gymnázium ALTIS s.r.o.">Gymnázium ALTIS</div><div class="bar-track"><div class="bar-fill" style="width:25%;background:#e53935"></div><div class="bar-val">13.00</div></div></div>
+      <div class="bar"><div class="bar-lbl" title="VOŠek.st.,G,SPŠpotr.t.">VOŠek.st.,G,SPŠpotr.t.</div><div class="bar-track"><div class="bar-fill" style="width:18%;background:#e53935"></div><div class="bar-val">9.33</div></div></div>
+      <div class="bar"><div class="bar-lbl" title="Gymnázium">Gymnázium</div><div class="bar-track"><div class="bar-fill" style="width:12%;background:#e53935"></div><div class="bar-val">6.00</div></div></div>
+      <div class="bar"><div class="bar-lbl" title="SPŠ elektrotechnická a gymnázium">SPŠ elektrotechnická</div><div class="bar-track"><div class="bar-fill" style="width:9%;background:#f59e0b"></div><div class="bar-val">4.65</div></div></div>
+      <div class="bar"><div class="bar-lbl" title="SPŠ a Gymnázium Na Třebešíně">SPŠ a Gymnázium Na Třebešíně</div><div class="bar-track"><div class="bar-fill" style="width:6%;background:#f59e0b"></div><div class="bar-val">3.33</div></div></div>
+      <div class="bar"><div class="bar-lbl" title="SOŠ automobilní, informatiky a gymnázium">SOŠ automobilní</div><div class="bar-track"><div class="bar-fill" style="width:6%;background:#f59e0b"></div><div class="bar-val">2.92</div></div></div>
     </div>
+
+    <h3>Nejvyšší min. skóre přijatých 2025</h3>
+    <div class="chart">
+      <div class="bar"><div class="bar-lbl" title="Gymnázium">Gymnázium</div><div class="bar-track"><div class="bar-fill" style="width:75%;background:#171717"></div><div class="bar-val">150.0%</div></div></div>
+      <div class="bar"><div class="bar-lbl" title="Gymnázium">Gymnázium</div><div class="bar-track"><div class="bar-fill" style="width:67%;background:#171717"></div><div class="bar-val">134.0%</div></div></div>
+      <div class="bar"><div class="bar-lbl" title="SPŠ zeměměřická a Geogr. gymnázium Praha">SPŠ zeměměřická</div><div class="bar-track"><div class="bar-fill" style="width:67%;background:#171717"></div><div class="bar-val">134.0%</div></div></div>
+      <div class="bar"><div class="bar-lbl" title="Gymn., SOŠ, ZŠ a MŠ pro sluch. postižené">Gymn. pro sluch. postižené</div><div class="bar-track"><div class="bar-fill" style="width:66%;background:#171717"></div><div class="bar-val">132.0%</div></div></div>
+      <div class="bar"><div class="bar-lbl" title="Rakouské gymnázium v Praze o.p.s.">Rakouské gymnázium</div><div class="bar-track"><div class="bar-fill" style="width:65%;background:#171717"></div><div class="bar-val">130.0%</div></div></div>
+      <div class="bar"><div class="bar-lbl" title="VOŠek.st.,G,SPŠpotr.t.">VOŠek.st.,G,SPŠpotr.t.</div><div class="bar-track"><div class="bar-fill" style="width:63%;background:#171717"></div><div class="bar-val">126.0%</div></div></div>
+      <div class="bar"><div class="bar-lbl" title="Gymnázium">Gymnázium</div><div class="bar-track"><div class="bar-fill" style="width:61%;background:#171717"></div><div class="bar-val">122.0%</div></div></div>
+      <div class="bar"><div class="bar-lbl" title="Škola MVV, SOŠ, Gymnázium, s.r.o.">Škola MVV</div><div class="bar-track"><div class="bar-fill" style="width:59%;background:#171717"></div><div class="bar-val">118.0%</div></div></div>
+    </div>
+  </div>
 </div>
 
 <!-- ============ POPLATKY ============ -->
 <div id="fees" class="tab-content">
-    <div class="sec">
-        <h2>💰 Školné a poplatky</h2>
-        <div class="desc">Přehled poplatků za soukromé a církevní gymnázia v Praze — školné ročně</div>
+  <div class="sec">
+    <h2>Poplatky</h2>
+    <div class="desc">Přehled poplatků za soukromé a církevní gymnázia v Praze</div>
 
-        <div class="note2">
-            <strong>Jak to funguje:</strong> Veřejná gymnázia a SOU jsou bez školného. Církevní školy často vyžadují dobrovolné příspěvky. 
-            U soukromých škol se školné liší — níže jsou orientační částky z roku 2024/2025.
-            <br><strong>⚠ Ceny se mohou měnit — ověřte na webu školy!</strong>
-        </div>
-
-        <div class="stats">
-            <div class="st"><div class="n">0 Kč</div><div class="l">veřejná (zdarma)</div></div>
-            <div class="st"><div class="n">~48–80K</div><div class="l">církevní (orientačně)</div></div>
-            <div class="st"><div class="n">~60–200K</div><div class="l">soukromá (orientačně)</div></div>
-            <div class="st"><div class="n">↓</div><div class="l">slevy a stipendium</div></div>
-        </div>
-
-        <h3>📋 Soukromá a církevní gymnázia — přehled poplatků</h3>
-        <div class="tbl"><table><thead><tr><th>Škola</th><th>Typ</th><th>Školné / rok</th><th>Slevy</th><th>Poznámka</th></tr></thead><tbody>
-        <tr>
-            <td><strong>Gymnázium Jana Nerudy</strong></td>
-            <td><span class="b priv">Soukromá</span></td>
-            <td class="fee-high">188 000 Kč</td>
-            <td>Sourozenci −20%, sociální slevy</td>
-            <td>Jedna z nejprestižnějších pražských gymnázií</td>
-        </tr>
-        <tr>
-            <td><strong>Gymnázium, Praha 4, Postupická</strong></td>
-            <td><span class="b priv">Soukromá</span></td>
-            <td class="fee-high">172 200 Kč</td>
-            <td>Slevy pro zaměstnance, stipendium</td>
-            <td>Bilingvní gymnázium</td>
-        </tr>
-        <tr>
-            <td><strong>Gymnázium Christiana Dopplera</strong></td>
-            <td><span class="b pub">Veřejná</span></td>
-            <td class="fee-free">0 Kč</td>
-            <td>—</td>
-            <td>Veřejná škola — bez školného</td>
-        </tr>
-        <tr>
-            <td><strong>Rakouské gymnázium v Praze o.p.s.</strong></td>
-            <td><span class="b church">Církevní</span></td>
-            <td class="fee-mid">~80 000 Kč</td>
-            <td>Rodinné slevy, dobrovolný příspěvek</td>
-            <td>Církevní škola — školné + dobrovolný příspěvek</td>
-        </tr>
-        <tr>
-            <td><strong>The English College</strong></td>
-            <td><span class="b priv">Soukromá</span></td>
-            <td class="fee-high">~700 000 Kč</td>
-            <td>Stipendium, slevy</td>
-            <td>Anglicky vyučující, prestižní škola</td>
-        </tr>
-        <tr>
-            <td><strong>Gymnázium ALTIS s.r.o.</strong></td>
-            <td><span class="b priv">Soukromá</span></td>
-            <td class="fee-mid">~109 200 Kč</td>
-            <td>Slevy při platbě na celý rok</td>
-            <td>Menší soukromé gymnázium</td>
-        </tr>
-        <tr>
-            <td><strong>Soukromé gymnázium ARCUS s.r.o.</strong></td>
-            <td><span class="b priv">Soukromá</span></td>
-            <td class="fee-mid">~63 000 Kč</td>
-            <td>Sociální slevy, stipendium</td>
-            <td>Křesťanská orientace</td>
-        </tr>
-        <tr>
-            <td><strong>Gymnázium, Praha 5, Nad Kavalírkou 1</strong></td>
-            <td><span class="b pub">Veřejná</span></td>
-            <td class="fee-free">0 Kč</td>
-            <td>—</td>
-            <td>Veřejná škola — bez školného</td>
-        </tr>
-        <tr>
-            <td><strong>Škola MVV, SOŠ, Gymnázium, s.r.o.</strong></td>
-            <td><span class="b priv">Soukromá</span></td>
-            <td class="fee-mid">~108 000 Kč</td>
-            <td>Rodinné slevy</td>
-            <td>SOU + gymnázium v jednom</td>
-        </tr>
-        <tr>
-            <td><strong>Soukromé gymnázium Dr. Tyrš</strong></td>
-            <td><span class="b priv">Soukromá</span></td>
-            <td class="fee-mid">~68 000 Kč</td>
-            <td>Sportovní talent — sleva</td>
-            <td>Sportovní gymnázium</td>
-        </tr>
-        </tbody></table></div>
-
-        <h3>🏫 SOU — školné</h3>
-        <div class="note3">
-            <strong>Většina SOU v Praze je veřejná a školné je 0 Kč.</strong> U některých SOU se vybírá příspěvek na výchovnou činnost (cca 1 000–5 000 Kč/rok) nebo za materiál.
-            <br><strong>Soukromé SOU</strong> mají školné obdobně jako soukromá gymnázia — viz tabulka výše.
-        </div>
-
-        <h3>📝 Kde se dozvědět přesné částky?</h3>
-        <div class="exp-card" style="margin-top:12px;">
-            <p><strong>Oficiální zdroje:</strong></p>
-            <ul style="margin:8px 0 8px 20px; font-size:0.88em;">
-                <li><a href="https://www.prijimacky.cz">prijimacky.cz</a> — přehled všech škol a přihlášek</li>
-                <li><a href="https://www.mpcr.cz">mpcr.cz</a> — Ministerstvo průmyslu a obchodu (registr škol)</li>
-                <li>Webové stránky jednotlivých škol — vždy aktuální informace o poplatcích</li>
-            </ul>
-            <p style="margin-top:8px;"><strong>Tip:</strong> Mnoho soukromých škol nabízí slevy při:</p>
-            <ul style="margin:8px 0 8px 20px; font-size:0.88em;">
-                <li>✓ Placení školného na celý rok dopředu</li>
-                <li>✓ Mocnostní/sourozenecké slevy</li>
-                <li>✓ Finanční náléhavost (sociální slevy)</li>
-                <li>✓ Sportovní/umělecké talenty</li>
-                <li>✓ Dobrovolnická činnost</li>
-            </ul>
-        </div>
+    <div class="note2">
+      <strong>Jak to funguje:</strong> Veřejná gymnázia a SOU jsou bez školného. Církevní školy často vyžadují dobrovolné příspěvky.
+      U soukromých škol se školné liší — níže jsou orientační částky z roku 2024/2025.
+      <br><strong>⚠ Ceny se mohou měnit — ověřte na webu školy!</strong>
     </div>
+
+    <div class="stats">
+      <div class="st"><div class="n">0 Kč</div><div class="l">veřejná (zdarma)</div></div>
+      <div class="st"><div class="n">~48–80K</div><div class="l">církevní (orientačně)</div></div>
+      <div class="st"><div class="n">~60–200K</div><div class="l">soukromá (orientačně)</div></div>
+      <div class="st"><div class="n">↓</div><div class="l">slevy a stipendium</div></div>
+    </div>
+
+    <h3>Soukromá a církevní gymnázia — přehled poplatků</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Škola</th><th>Typ</th><th>Školné / rok</th><th>Slevy</th><th>Poznámka</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Gymnázium Jana Nerudy</strong></td><td><span class="b priv">Soukromá</span></td><td class="fee-high">188 000 Kč</td><td>Sourozenci −20%, sociální slevy</td><td>Jedna z nejprestižnějších pražských gymnázií</td></tr>
+        <tr><td><strong>Gymnázium, Praha 4, Postupická</strong></td><td><span class="b priv">Soukromá</span></td><td class="fee-high">172 200 Kč</td><td>Slevy pro zaměstnance, stipendium</td><td>Bilingvní gymnázium</td></tr>
+        <tr><td><strong>Gymnázium Christiana Dopplera</strong></td><td><span class="b pub">Veřejná</span></td><td class="fee-free">0 Kč</td><td>—</td><td>Veřejná škola — bez školného</td></tr>
+        <tr><td><strong>Rakouské gymnázium v Praze o.p.s.</strong></td><td><span class="b church">Církevní</span></td><td class="fee-mid">~80 000 Kč</td><td>Rodinné slevy, dobrovolný příspěvek</td><td>Církevní škola</td></tr>
+        <tr><td><strong>The English College</strong></td><td><span class="b priv">Soukromá</span></td><td class="fee-high">~700 000 Kč</td><td>Stipendium, slevy</td><td>Anglicky vyučující, prestižní škola</td></tr>
+        <tr><td><strong>Gymnázium ALTIS s.r.o.</strong></td><td><span class="b priv">Soukromá</span></td><td class="fee-mid">~109 200 Kč</td><td>Slevy při platbě na celý rok</td><td>Menší soukromé gymnázium</td></tr>
+        <tr><td><strong>Soukromé gymnázium ARCUS s.r.o.</strong></td><td><span class="b priv">Soukromá</span></td><td class="fee-mid">~63 000 Kč</td><td>Sociální slevy, stipendium</td><td>Křesťanská orientace</td></tr>
+        <tr><td><strong>Gymnázium, Praha 5, Nad Kavalírkou 1</strong></td><td><span class="b pub">Veřejná</span></td><td class="fee-free">0 Kč</td><td>—</td><td>Veřejná škola — bez školného</td></tr>
+        <tr><td><strong>Škola MVV, SOŠ, Gymnázium, s.r.o.</strong></td><td><span class="b priv">Soukromá</span></td><td class="fee-mid">~108 000 Kč</td><td>Rodinné slevy</td><td>SOU + gymnázium v jednom</td></tr>
+        <tr><td><strong>Soukromé gymnázium Dr. Tyrš</strong></td><td><span class="b priv">Soukromá</span></td><td class="fee-mid">~68 000 Kč</td><td>Sportovní talent — sleva</td><td>Sportovní gymnázium</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>SOU — školné</h3>
+    <div class="note3">
+      <strong>Většina SOU v Praze je veřejná a školné je 0 Kč.</strong> U některých SOU se vybírá příspěvek na výchovnou činnost (cca 1 000–5 000 Kč/rok) nebo za materiál.
+    </div>
+
+    <h3>Kde se dozvědět přesné částky?</h3>
+    <div class="exp-card" style="margin-top:8px;">
+      <p><strong>Oficiální zdroje:</strong></p>
+      <ul style="margin:8px 0 8px 20px; font-size:13px;">
+        <li><a href="https://www.prijimacky.cz">prijimacky.cz</a> — přehled všech škol a přihlášek</li>
+        <li><a href="https://www.mpcr.cz">mpcr.cz</a> — Ministerstvo průmyslu a obchodu (registr škol)</li>
+        <li>Webové stránky jednotlivých škol — vždy aktuální informace o poplatcích</li>
+      </ul>
+      <p style="margin-top:8px;"><strong>Tip:</strong> Mnoho soukromých škol nabízí slevy při:</p>
+      <ul style="margin:8px 0 8px 20px; font-size:13px;">
+        <li>✓ Placení školného na celý rok dopředu</li>
+        <li>✓ Mocnostní/sourozenecké slevy</li>
+        <li>✓ Finanční náléhavost (sociální slevy)</li>
+        <li>✓ Sportovní/umělecké talenty</li>
+        <li>✓ Dobrovolnická činnost</li>
+      </ul>
+    </div>
+  </div>
 </div>
 
 </div><!-- /wrap -->
 
 <footer>
-    Data: <a href="https://data.cermat.cz">Cermat</a> · Poplatky: orientační, ověřte na webu škol · Generováno: 2026-05-15
+  Data: <a href="https://data.cermat.cz">Cermat</a> · Poplatky: orientační, ověřte na webu škol · Generováno: 2026-05-15
 </footer>
-
 <script>
 function showTab(id, btn) {
-    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    document.getElementById(id).classList.add('active');
-    btn.classList.add('active');
-}
-function filter(input, id) {
-    const f = input.value.toLowerCase();
-    const t = document.getElementById(id);
-    if (!t) return;
-    const rows = t.querySelectorAll('tbody tr');
-    let visible = 0;
-    rows.forEach(r => {
-        const match = r.textContent.toLowerCase().includes(f);
-        r.style.display = match ? '' : 'none';
-        if (match) visible++;
-    });
-    // Update count
-    const cnt = t.parentElement.querySelector('.cnt');
-    if (cnt) {
-        const total = rows.length;
-        cnt.textContent = visible === total ? `${total} záznamů` : `${visible} z ${total} zobrazeno`;
-    }
-}
-function sort(id, col) {
-    const t = document.getElementById(id);
-    if (!t) return;
-    const tbody = t.querySelector('tbody');
-    if (!tbody) return;
-    const rows = Array.from(tbody.querySelectorAll('tr'));
-    const ths = t.querySelectorAll('th');
-    if (col >= ths.length) return;
-    const th = ths[col];
-    const asc = th.classList.contains('asc');
-    ths.forEach(h => h.classList.remove('asc','desc'));
-    th.classList.add(asc?'desc':'asc');
-    rows.sort((a,b) => {
-        // Use textContent on the row's cells — works even in hidden tabs
-        const aTds = a.querySelectorAll('td');
-        const bTds = b.querySelectorAll('td');
-        if (col >= aTds.length || col >= bTds.length) return 0;
-        // Use textContent (not innerText) — innerText is empty for hidden elements
-        let av = aTds[col].textContent.trim();
-        let bv = bTds[col].textContent.trim();
-        if (av === 'N/A' || bv === 'N/A') return asc ? bv.localeCompare(av, 'cs') : av.localeCompare(bv, 'cs');
-        // Parse number — strip everything except digits, dots, minus
-        const an = parseFloat(av.replace(/[^\d.-]/g, ''));
-        const bn = parseFloat(bv.replace(/[^\d.-]/g, ''));
-        if (!isNaN(an) && !isNaN(bn)) return asc ? bn - an : an - bn;
-        return asc ? bv.localeCompare(av, 'cs') : av.localeCompare(bv, 'cs');
-    });
-    rows.forEach(r => tbody.appendChild(r));
+  document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
 }
 
+function setYear(yearId, btn) {
+  // Update year buttons
+  document.querySelectorAll('.year-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  // Update year data visibility within active tab
+  const activeTab = document.querySelector('.tab-content.active');
+  if (activeTab) {
+    activeTab.querySelectorAll('.year-data').forEach(d => d.classList.remove('active'));
+    const yearData = activeTab.querySelector('#' + activeTab.id + '-' + yearId);
+    if (yearData) yearData.classList.add('active');
+  }
+}
+
+function filter(input, tableId) {
+  const f = input.value.toLowerCase();
+  const t = document.getElementById(tableId);
+  if (!t) return;
+  const rows = t.querySelectorAll('tbody tr');
+  let visible = 0;
+  rows.forEach(r => {
+    const match = r.textContent.toLowerCase().includes(f);
+    r.style.display = match ? '' : 'none';
+    if (match) visible++;
+  });
+  const cnt = t.parentElement.querySelector('.cnt');
+  if (cnt) {
+    const total = rows.length;
+    cnt.textContent = visible === total ? total + ' záznamů' : visible + ' z ' + total + ' zobrazeno';
+  }
+}
+
+function sort(tableId, col) {
+  const t = document.getElementById(tableId);
+  if (!t) return;
+  const tbody = t.querySelector('tbody');
+  if (!tbody) return;
+  const rows = Array.from(tbody.querySelectorAll('tr'));
+  const ths = t.querySelectorAll('th');
+  if (col >= ths.length) return;
+  const th = ths[col];
+  const asc = th.classList.contains('asc');
+  ths.forEach(h => h.classList.remove('asc', 'desc'));
+  th.classList.add(asc ? 'desc' : 'asc');
+  rows.sort((a, b) => {
+    const aTds = a.querySelectorAll('td');
+    const bTds = b.querySelectorAll('td');
+    if (col >= aTds.length || col >= bTds.length) return 0;
+    let av = aTds[col].textContent.trim();
+    let bv = bTds[col].textContent.trim();
+    if (av === 'N/A' || bv === 'N/A') return asc ? bv.localeCompare(av, 'cs') : av.localeCompare(bv, 'cs');
+    const an = parseFloat(av.replace(/[^\d.-]/g, ''));
+    const bn = parseFloat(bv.replace(/[^\d.-]/g, ''));
+    if (!isNaN(an) && !isNaN(bn)) return asc ? bn - an : an - bn;
+    return asc ? bv.localeCompare(av, 'cs') : av.localeCompare(bv, 'cs');
+  });
+  rows.forEach(r => tbody.appendChild(r));
+}
 </script>
 </body>
 </html>
