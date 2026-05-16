@@ -886,10 +886,10 @@ function filter(input, tableId) {
   rows.forEach(r => {
     const match = !f || r.textContent.toLowerCase().includes(f);
     r.style.display = match ? '' : 'none';
-    if (match) visible++;
-  });
-  const cnt = t.closest('.tbl').nextElementSibling;
-  if (cnt && cnt.classList.contains('cnt')) {
+  // Find the .cnt element that follows this table's .tbl wrapper
+  const tblWrapper = t.parentElement;
+  const cnt = tblWrapper ? tblWrapper.nextElementSibling : null;
+  if (cnt && cnt.classList && cnt.classList.contains('cnt')) {
     const total = rows.length;
     cnt.textContent = (!f) ? total + ' záznamů' : visible + ' z ' + total + ' zobrazeno';
   }
