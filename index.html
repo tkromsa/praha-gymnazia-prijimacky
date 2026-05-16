@@ -950,6 +950,12 @@ function showTab(id, btn) {
     }
   });
   newTab.querySelectorAll('.search').forEach(s => { s.value = ''; });
+  // Sync year to match currently selected year button
+  const activeYearBtn = document.querySelector('.year-btn.active');
+  if (activeYearBtn) {
+    const match = activeYearBtn.getAttribute('onclick').match(/setYear\('(\w+)'/);
+    if (match) setYear(match[1], activeYearBtn);
+  }
 }
 
 function setYear(yearId, btn) {
