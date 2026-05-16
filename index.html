@@ -888,8 +888,8 @@ function filter(input, tableId) {
     r.style.display = match ? '' : 'none';
     if (match) visible++;
   });
-  const cnt = t.parentElement.querySelector('.cnt');
-  if (cnt) {
+  const cnt = t.closest('.tbl').nextElementSibling;
+  if (cnt && cnt.classList.contains('cnt')) {
     const total = rows.length;
     cnt.textContent = (!f) ? total + ' záznamů' : visible + ' z ' + total + ' zobrazeno';
   }
