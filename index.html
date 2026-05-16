@@ -334,14 +334,14 @@ footer { text-align: center; padding: 40px 0; color: var(--text-muted); font-siz
     <div class="desc">Vysvětlení klíčových pojmů a ukazatelů</div>
     <div class="exp-grid">
       <div class="exp-card">
-        <h4>Co znamená skóre v %?</h4>
-        <p>Skóre je v procentech z maximálního možného skóre JPZ (český jazyk + matematika).</p>
-        <div class="eg">100% = maximální skóre<br>85% = podprůměrný výsledek</div>
-      </div>
-      <div class="exp-card">
         <h4>Co znamená index poptávky?</h4>
         <p>Počet uchazečů ÷ kapacita. Kolik uchazečů připadá na jedno místo.</p>
         <div class="eg">3.0 = 3 uchazeči na 1 místo<br>1.0 = 1:1 (plná kapacita)<br>0.5 = polovina kapacity</div>
+      </div>
+      <div class="exp-card">
+        <h4>Co znamená skóre v %?</h4>
+        <p>Skóre z didaktických testů (český jazyk + matematika) vyjádřeno jako % z maximálního možného skóre. <strong>100% = maximální skóre</strong>. Hodnoty nad 100% znamenají, že škola přijala i uchazeče s velmi vysokým skóre.</p>
+        <div class="eg">100% = maximální možné skóre<br>150% = výrazně nadprůměrný výsledek<br>85% = podprůměrný výsledek</div>
       </div>
       <div class="exp-card">
         <h4>Min skóre přijatých</h4>
@@ -356,9 +356,12 @@ footer { text-align: center; padding: 40px 0; color: var(--text-muted); font-siz
         <p><span class="b priv">Soukromá</span> = školné 48–200 tis. Kč/rok.<br><span class="b pub">Veřejná</span> = bez školného.<br><span class="b church">Církevní</span> = často se školným.</p>
       </div>
       <div class="exp-card">
-        <h4>Barevné kódování</h4>
+        <h4>Barevné kódování indexu</h4>
         <p><span class="idx h">■ Červená (≥5)</span> — velmi vysoká konkurence<br><span class="idx m">■ Oranžová (2–5)</span> — střední<br><span class="idx l">■ Zelená (&lt;2)</span> — nízká</p>
       </div>
+    </div>
+    <div class="note3" style="margin-top:16px;">
+      <strong>O datech:</strong> Zdroj: <a href="https://data.cermat.cz">Cermat</a>. Skóre z didaktických testů JPZ (český jazyk + matematika). Hodnoty nad 100% znamenají, že škola přijala uchazeče s výrazně nadprůměrnými výsledky.
     </div>
   </div>
 </div>
@@ -390,7 +393,7 @@ footer { text-align: center; padding: 40px 0; color: var(--text-muted); font-siz
             <th>#</th><th onclick="sort('t4k1-25',1)">Škola</th><th>Adresa</th>
             <th onclick="sort('t4k1-25',3)">Přihlášky</th><th onclick="sort('t4k1-25',4)">Přijati</th>
             <th onclick="sort('t4k1-25',5)">Kapacita</th><th onclick="sort('t4k1-25',6)">Index</th>
-            <th onclick="sort('t4k1-25',7)">Min %</th><th onclick="sort('t4k1-25',8)">Průměr %</th>
+            <th onclick="sort('t4k1-25',7)">Min skóre</th><th onclick="sort('t4k1-25',8)">Prům. skóre</th>
           </tr></thead>
           <tbody>
             <tr><td>1</td><td><strong>Gymnázium Čakovice</strong> <span class="b pub">veřejná</span></td><td>náměstí 25. března 100, Praha, 19600</td><td>457</td><td>30</td><td>30</td><td><span class="idx h">15.23</span></td><td>126.0%</td><td>140.8%</td></tr>
@@ -436,7 +439,7 @@ footer { text-align: center; padding: 40px 0; color: var(--text-muted); font-siz
             <th>#</th><th onclick="sort('t4k2-25',1)">Škola</th><th>Adresa</th>
             <th onclick="sort('t4k2-25',3)">Přihlášky</th><th onclick="sort('t4k2-25',4)">Přijati</th>
             <th onclick="sort('t4k2-25',5)">Kapacita</th><th onclick="sort('t4k2-25',6)">Index</th>
-            <th onclick="sort('t4k2-25',7)">Min %</th><th onclick="sort('t4k2-25',8)">Průměr %</th>
+            <th onclick="sort('t4k2-25',7)">Min skóre</th><th onclick="sort('t4k2-25',8)">Prům. skóre</th>
           </tr></thead>
           <tbody>
             <tr><td>1</td><td><strong>Gymnázium</strong> <span class="b pub">veřejná</span></td><td>Špitálská 700, Praha, 19000</td><td>43</td><td>3</td><td>3</td><td><span class="idx h">14.33</span></td><td>150.0%</td><td>151.3%</td></tr>
@@ -512,7 +515,7 @@ footer { text-align: center; padding: 40px 0; color: var(--text-muted); font-siz
         </div>
         <input class="search" placeholder="Hledat školu..." oninput="filter(this,'t6k1-25')">
         <div class="tbl"><table id="t6k1-25">
-          <thead><tr><th>#</th><th onclick="sort('t6k1-25',1)">Škola</th><th>Adresa</th><th onclick="sort('t6k1-25',3)">Přihlášky</th><th onclick="sort('t6k1-25',4)">Přijati</th><th onclick="sort('t6k1-25',5)">Kapacita</th><th onclick="sort('t6k1-25',6)">Index</th><th onclick="sort('t6k1-25',7)">Min %</th><th onclick="sort('t6k1-25',8)">Průměr %</th></tr></thead>
+          <thead><tr><th>#</th><th onclick="sort('t6k1-25',1)">Škola</th><th>Adresa</th><th onclick="sort('t6k1-25',3)">Přihlášky</th><th onclick="sort('t6k1-25',4)">Přijati</th><th onclick="sort('t6k1-25',5)">Kapacita</th><th onclick="sort('t6k1-25',6)">Index</th><th onclick="sort('t6k1-25',7)">Min skóre</th><th onclick="sort('t6k1-25',8)">Prům. skóre</th></tr></thead>
           <tbody>
             <tr><td>1</td><td><strong>Gymnázium Na Pražačce</strong> <span class="b pub">veřejná</span></td><td>Nad Ohradou 2825, Praha, 13000</td><td>608</td><td>30</td><td>30</td><td><span class="idx h">20.27</span></td><td>128.0%</td><td>140.5%</td></tr>
             <tr><td>2</td><td><strong>Rakouské gymnázium v Praze o.p.s.</strong> <span class="b priv">soukromá</span></td><td>Na Cikorce 2166, Praha, 14300</td><td>337</td><td>45</td><td>45</td><td><span class="idx h">7.49</span></td><td>122.0%</td><td>132.5%</td></tr>
@@ -533,7 +536,7 @@ footer { text-align: center; padding: 40px 0; color: var(--text-muted); font-siz
         </div>
         <input class="search" placeholder="Hledat školu..." oninput="filter(this,'t6k2-25')">
         <div class="tbl"><table id="t6k2-25">
-          <thead><tr><th>#</th><th onclick="sort('t6k2-25',1)">Škola</th><th>Adresa</th><th onclick="sort('t6k2-25',3)">Přihlášky</th><th onclick="sort('t6k2-25',4)">Přijati</th><th onclick="sort('t6k2-25',5)">Kapacita</th><th onclick="sort('t6k2-25',6)">Index</th><th onclick="sort('t6k2-25',7)">Min %</th><th onclick="sort('t6k2-25',8)">Průměr %</th></tr></thead>
+          <thead><tr><th>#</th><th onclick="sort('t6k2-25',1)">Škola</th><th>Adresa</th><th onclick="sort('t6k2-25',3)">Přihlášky</th><th onclick="sort('t6k2-25',4)">Přijati</th><th onclick="sort('t6k2-25',5)">Kapacita</th><th onclick="sort('t6k2-25',6)">Index</th><th onclick="sort('t6k2-25',7)">Min skóre</th><th onclick="sort('t6k2-25',8)">Prům. skóre</th></tr></thead>
           <tbody>
             <tr><td>1</td><td><strong>Rakouské gymnázium v Praze o.p.s.</strong> <span class="b priv">soukromá</span></td><td>Na Cikorce 2166, Praha, 14300</td><td>204</td><td>4</td><td>4</td><td><span class="idx h">51.00</span></td><td>130.0%</td><td>133.5%</td></tr>
             <tr><td>2</td><td><strong>Gymnázium</strong> <span class="b pub">veřejná</span></td><td>Ústavní 400, Praha, 18100</td><td>153</td><td>3</td><td>3</td><td><span class="idx h">51.00</span></td><td>122.0%</td><td>129.3%</td></tr>
@@ -601,7 +604,7 @@ footer { text-align: center; padding: 40px 0; color: var(--text-muted); font-siz
         </div>
         <input class="search" placeholder="Hledat školu..." oninput="filter(this,'t8k1-25')">
         <div class="tbl"><table id="t8k1-25">
-          <thead><tr><th>#</th><th onclick="sort('t8k1-25',1)">Škola</th><th>Adresa</th><th onclick="sort('t8k1-25',3)">Přihlášky</th><th onclick="sort('t8k1-25',4)">Přijati</th><th onclick="sort('t8k1-25',5)">Kapacita</th><th onclick="sort('t8k1-25',6)">Index</th><th onclick="sort('t8k1-25',7)">Min %</th><th onclick="sort('t8k1-25',8)">Průměr %</th></tr></thead>
+          <thead><tr><th>#</th><th onclick="sort('t8k1-25',1)">Škola</th><th>Adresa</th><th onclick="sort('t8k1-25',3)">Přihlášky</th><th onclick="sort('t8k1-25',4)">Přijati</th><th onclick="sort('t8k1-25',5)">Kapacita</th><th onclick="sort('t8k1-25',6)">Index</th><th onclick="sort('t8k1-25',7)">Min skóre</th><th onclick="sort('t8k1-25',8)">Prům. skóre</th></tr></thead>
           <tbody>
             <tr><td>1</td><td><strong>Gymnázium, Praha 4, Budějovická 680</strong> <span class="b pub">veřejná</span></td><td>Budějovická 680, Praha, 14000</td><td>606</td><td>60</td><td>60</td><td><span class="idx h">10.10</span></td><td>140.0%</td><td>156.1%</td></tr>
             <tr><td>2</td><td><strong>Malostranské gymnázium</strong> <span class="b pub">veřejná</span></td><td>Josefská 626, Praha, 11800</td><td>551</td><td>60</td><td>60</td><td><span class="idx h">9.18</span></td><td>152.0%</td><td>166.6%</td></tr>
@@ -628,7 +631,7 @@ footer { text-align: center; padding: 40px 0; color: var(--text-muted); font-siz
         </div>
         <input class="search" placeholder="Hledat školu..." oninput="filter(this,'t8k2-25')">
         <div class="tbl"><table id="t8k2-25">
-          <thead><tr><th>#</th><th onclick="sort('t8k2-25',1)">Škola</th><th>Adresa</th><th onclick="sort('t8k2-25',3)">Přihlášky</th><th onclick="sort('t8k2-25',4)">Přijati</th><th onclick="sort('t8k2-25',5)">Kapacita</th><th onclick="sort('t8k2-25',6)">Index</th><th onclick="sort('t8k2-25',7)">Min %</th><th onclick="sort('t8k2-25',8)">Průměr %</th></tr></thead>
+          <thead><tr><th>#</th><th onclick="sort('t8k2-25',1)">Škola</th><th>Adresa</th><th onclick="sort('t8k2-25',3)">Přihlášky</th><th onclick="sort('t8k2-25',4)">Přijati</th><th onclick="sort('t8k2-25',5)">Kapacita</th><th onclick="sort('t8k2-25',6)">Index</th><th onclick="sort('t8k2-25',7)">Min skóre</th><th onclick="sort('t8k2-25',8)">Prům. skóre</th></tr></thead>
           <tbody>
             <tr><td>1</td><td><strong>Gymnázium ALTIS s.r.o.</strong> <span class="b priv">soukromá</span></td><td>Dopplerova 351, Praha, 10900</td><td>52</td><td>4</td><td>4</td><td><span class="idx h">13.00</span></td><td>102.0%</td><td>112.5%</td></tr>
           </tbody>
